@@ -127,29 +127,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'flyer_builder.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-# DATABASES = {
-#    'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'flyer',
-#         'USER': 'root',
-#         'PASSWORD': 'root1234',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#     },
-#     # 'products_catalog_db': {
-#     #     'ENGINE': 'django.db.backends.mysql',
-#     #     'NAME': '##',
-#     #     'USER': 'root',
-#     #     'PASSWORD': 'root1234',
-#     #     'HOST': '127.0.0.1',
-#     #     'PORT': '3306',
-#     # },
-# }
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIGRATION_MODULES = {
@@ -246,8 +223,8 @@ STATIC_LOW_RES_PIC_PATH = "/static/AI-Flyer/LowResolution/"
 JPG_EXT = ".jpg"
 STATIC_PIC_PATH = ""
 HIGH_RES_PICTURES_PATH = ""
-CATALOG_IMAGES_URL = "http://127.0.0.1:8888/"
-CATALOG_IMAGES_URL_PREFIX = "http://127.0.0.1:8888/static/AI-Flyer/LowResolution/"
+CATALOG_IMAGES_URL = "http://127.0.0.1:8000/"
+CATALOG_IMAGES_URL_PREFIX = "http://127.0.0.1:8000/static/AI-Flyer/LowResolution/"
 STATIC_PREVIEW_BLOCK_PATH = "/static/AI-Flyer/preview_blocks/"
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -257,7 +234,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = "/projects"
 LOGOUT_REDIRECT_URL = "/"
 
-PYTHON_PATH = os.path.join(BASE_DIR, './venv/bin/python')
+# PYTHON_PATH = os.path.join(BASE_DIR, './env/bin/python')
+# PYTHON_PATH = os.path.join(BASE_DIR, './env/Scripts/python')
 MANAGE_PY_PATH = os.path.join(BASE_DIR, 'manage.py')
 
 
