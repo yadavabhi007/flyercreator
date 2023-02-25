@@ -1,2 +1,2 @@
-Admin - admin/admin@123
-User - rosario/Badil@2021
+Admin - admin/admin
+User - abhi/123456er
