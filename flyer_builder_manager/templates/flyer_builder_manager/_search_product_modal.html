@@ -1,0 +1,65 @@
+{% load i18n %}
+
+<div class="modal fade" id="search-product-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title only-search">
+                    <i class="material-icons">search</i>
+                    {% trans 'Cerca prodotto' %}
+                </h5>
+                <h5 class="modal-title search-and-select" style="display: none">
+                    <i class="material-icons">add_circle</i>
+                    {% trans 'Aggiungi prodotto' %}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="search-product-form">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">{% trans 'Codice' %}</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="code" id="search-product-form_code"
+                                    autocomplete="off">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button"
+                                        onclick="App.search_product.search_by_code()">{% trans 'Cerca per codice'
+                                        %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">{% trans 'Descrizione' %}</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="description"
+                                    id="search-product-form_description" autocomplete="off">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button"
+                                        onclick="App.search_product.search_by_description()">{% trans 'Cerca per
+                                        descrizione' %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="search-product-result">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Chiudi' %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        App.search_product.init();
+    });
+</script>

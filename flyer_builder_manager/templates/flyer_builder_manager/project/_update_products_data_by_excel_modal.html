@@ -1,0 +1,43 @@
+{% load i18n %}
+
+<div class="modal fade" id="update-products-data-by-excel-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'Aggiorna dati prodotti da Excel' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="update-products-data-by-excel-form" method="POST"
+                    action="{% url 'flyer_builder_manager:update_products_data_by_excel' project_id=project.pk %}"
+                    enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-form-label">File Excel</label>
+                        <div class="col-sm-8">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="excel"
+                                    id="update-products-data-by-excel-form_excel" required>
+                                <label class="custom-file-label" for="update-products-data-by-excel-form_excel">{% trans
+                                    'Seleziona file' %}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Annulla' %}</button>
+                <button type="button" class="btn btn-primary" onclick="App.project.update_products_data_by_excel()">{%
+                    trans 'Importa' %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>

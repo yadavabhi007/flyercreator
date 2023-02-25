@@ -1,0 +1,159 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load static %}
+{% load i18n %}
+{% block js %}
+<!-- <script type="text/javascript" src="{% static 'flyer_builder_manager/js/edit_product.js' %}"></script> -->
+{% endblock %}
+
+
+{% block content %}
+<h3>
+    <div class="row">
+        <div class="col">
+            <i class="material-icons mr-2">remove_red_eye
+            </i>
+            {% trans 'Visualizza prodotto' %}
+        </div>
+        {% if request.user.can_modify_products %}
+        <div class="col-auto">
+            <a class="btn btn-primary mb-3"
+                href="{% url 'flyer_builder_manager:edit_product' product_id=product.pk  %}">
+                <i class="material-icons">edit</i>
+                {% trans 'Modifica' %}
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Codice' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="code" id="edit-product-form_code"
+                        value="{{distribution.code}}" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{% trans 'Descrizione' %}</h6>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 1' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field1" id="edit-product-form_field1"
+                        value="{{field1}}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 2' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field2" id="edit-product-form_field2"
+                        value="{{field2}}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 3' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field3" id="edit-product-form_field3"
+                        value="{{field3}}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 4' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field4" id="edit-product-form_field4"
+                        value="{{field4}}" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{% trans 'Dettagli' %}</h6>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Categoria' %}</label>
+                <div class="col-sm-8">
+
+                    {% for c in categories %}
+
+                    {% if product.category == c %}
+                    <input class="form-control" type="text" value="{{ c.name }}" disabled>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Sottocategoria' %}</label>
+                <div class="col-sm-8">
+
+                    {% for c in subcategories %}
+                    {% if product.subcategory == c %}
+                    <input class="form-control" type="text" value="{{ c.name }}" disabled>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Tipo grammatura' %}</label>
+                <div class="col-sm-8">
+
+                    {% if product.grammageType == 0 %}<input type="text" class="form-control" name="field4"
+                        id="edit-product-form_field4" value="{% trans 'Millilitri' %}" disabled>{% endif %}
+                    {% if product.grammageType == 1 %}<input type="text" class="form-control" name="field4"
+                        id="edit-product-form_field4" value="{% trans 'Grammi' %}" disabled>{% endif %}
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Grammatura' %}</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" name="gramm_value" id="edit-product-form_gramm_value"
+                        value="{{product.grammageValue}}" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-8">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="branded_product"
+                            id="edit-product-form_branded_product" {% if product.branded_product %}checked{% endif %}
+                            disabled>
+                        <label class="form-check-label" for="edit-product-form_branded_product">
+                            {% trans 'Prodotto a marchio' %}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{% trans 'Immagini' %}</h6>
+            <div class="row">
+                {% for image in product.images %}
+                <div class="col-lg-3">
+                    <div style="border-radius: 4px; padding: 10px; border: 1px solid #ddd; text-align: center;">
+                        <img src="{{ image.image_url }}" class="img-fluid" style="height: 200px;">
+                        <div style="height: 100px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd;">
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            App.edit_product.init();
+        });
+    </script>
+
+    {% endblock %}

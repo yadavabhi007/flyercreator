@@ -1,0 +1,142 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load i18n %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h3 class="mb-3">
+            <i class="material-icons">assignment</i>
+            {% trans 'Campagne' %}
+        </h3>
+    </div>
+
+</div>
+<form>
+    <table class="table table-hover table-light table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="10%">{% if request.user.is_superuser %} {% trans 'Cliente' %} {% endif %}</th>
+                <th scope="col" width="20%">{% trans 'Nome progetto' %}</th>
+                <th scope="col" width="20%">{% trans 'Inizio sell-out' %}</th>
+                <th scope="col" width="20%">{% trans 'Fine sell-out' %}</th>
+                <th scope="col" width="10%">{% trans 'Azioni' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {% if request.user.is_superuser %}
+                    <select name="seller" class="form-control" id="" onchange="App.show_loader(); return form.submit()">
+                        <option value="0">{% trans 'Scegli cliente' %}</option>
+                        {% for s in sellers %}
+                        <option value="{{ s.pk }}" {% if request.GET.seller==s.pk|stringformat:"i" %}selected{% endif
+                            %}>{{ s.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    {% endif %}
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="name" autocomplete="off"
+                        value="{{ request.GET.name }}" onchange="App.show_loader(); return form.submit()">
+                </td>
+                <td>
+                    <input type="date" class="form-control" name="sellin" autocomplete="off"
+                        value="{{ request.GET.sellin }}" onchange="App.show_loader(); return form.submit()">
+                </td>
+                <td>
+                    <input type="date" class="form-control" name="sellout" autocomplete="off"
+                        value="{{ request.GET.sellout }}" onchange="App.show_loader(); return form.submit()">
+                </td>
+                <td></td>
+            </tr>
+            {% if projects.paginator.count > 0 %}
+            {% for project in projects %}
+            <tr>
+                <td>
+                    {% if request.user.is_superuser %}
+                    <p>{{project.seller.name}}</p>
+                    {% endif %}
+                </td>
+                <td>
+                    <p>{{project.name}}</p>
+                </td>
+                <td>
+                    <p>{{project.sell_in}}</p>
+                </td>
+                <td>
+                    <p>{{project.sell_out}}</p>
+                </td>
+                <td>
+                    <a href="{% url 'flyer_builder_manager:download' project.id project.seller.id %}"
+                        class="btn btn-primary" title="Vedi materiali scaricabili">
+                        <i class="material-icons">remove_red_eye</i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">{% trans 'Nessun prodotto trovato' %}</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</form>
+<nav>
+    <ul class="pagination justify-content-center">
+        {% if projects.has_previous %}
+        <li class="page-item">
+            <a class="page-link"
+                href="?page=1{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}{% if request.GET.sellin %}&sellin={{ request.GET.sellin }}{% endif %}{% if request.GET.sellout %}&sellout={{ request.GET.sellout }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Previous">
+                <span aria-hidden="true">
+                    <i class="material-icons">first_page</i>
+                    {% trans 'Inizio' %}
+                </span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ projects.previous_page_number }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}{% if request.GET.sellin %}&sellin={{ request.GET.sellin }}{% endif %}{% if request.GET.sellout %}&sellout={{ request.GET.sellout }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Previous">
+                <span aria-hidden="true">
+                    <i class="material-icons">navigate_before</i>
+                    {% trans 'Precedente' %}
+                </span>
+            </a>
+        </li>
+        {% endif %}
+
+        <li class="page-item disabled">
+            <span class="page-link">
+                <i class="material-icons">file_copy</i>
+                {% trans 'Pagina' %} {{ projects.number }} {% trans 'di' %} {{ projects.paginator.num_pages }}
+                ({{projects.paginator.count}} campagne)
+            </span>
+        </li>
+
+        {% if projects.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ projects.next_page_number }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}{% if request.GET.sellin %}&sellin={{ request.GET.sellin }}{% endif %}{% if request.GET.sellout %}&sellout={{ request.GET.sellout }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Next">
+                <span aria-hidden="true">
+                    <i class="material-icons">navigate_next</i>
+                    {% trans 'Successivo' %}
+                </span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ projects.paginator.num_pages }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}{% if request.GET.sellin %}&sellin={{ request.GET.sellin }}{% endif %}{% if request.GET.sellout %}&sellout={{ request.GET.sellout }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Next">
+                <span aria-hidden="true">
+                    <i class="material-icons">last_page</i>
+                    {% trans 'Fine' %}
+                </span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

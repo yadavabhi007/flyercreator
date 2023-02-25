@@ -1,0 +1,48 @@
+{% load i18n %}
+<div class="modal fade" id="new-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'Crea volantino da Excel' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="create-excel-project-form" method="POST"
+                    action="{% url 'flyer_builder_manager:create_excel_project' %}" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-form-label">{% trans 'Nome' %}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="name" id="excel-project-name" required
+                                autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-form-label">{% trans 'File Excel' %}</label>
+                        <div class="col-sm-8">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="excel" id="excel-project-file"
+                                    required>
+                                <label class="custom-file-label" for="excel-project-file">{% trans 'Seleziona file'
+                                    %}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Annulla' %}</button>
+                <button type="button" class="btn btn-primary" onclick="App.create_excel_project()">{% trans 'Crea'
+                    %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>

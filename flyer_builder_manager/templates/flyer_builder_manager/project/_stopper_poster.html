@@ -1,0 +1,324 @@
+<div class="page_container" style="width: 800px;">
+    {% if stoppers %}
+    <div id="mySidenav" class="sidenav sidenav_left shadow-lg" style="width: 0px; overflow: hidden;">
+        <a href="javascript:void(0)" class="closebtn" onclick="App.page.close_page_banner()" style="display: none;">
+            <i class="material-icons">close</i>
+        </a>
+        <div class="row m-0 mt-3 pl-3 pr-3">
+            <div class="scroll-slid style-3">
+                <div class="modal-divider">
+                    <p>Header Image</p>
+                </div>
+                {% for header_image in header_images %}
+                <div class="card shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                    <img src="{{header_image.image.url}}" />
+                </div>
+                {% endfor %}
+
+                <div class="modal-divider">
+                    <p>Footer Image</p>
+                </div>
+                {% for footer_image in footer_images %}
+                <div class="card shadow-none ui-draggable" data-image_id="{{footer_image.id}}">
+                    <img src="{{footer_image.image.url}}" />
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if posters %}
+    <div id="mySidenav" class="sidenav sidenav_left shadow-lg" style="width: 0px; overflow: hidden;">
+        <a href="javascript:void(0)" class="closebtn" onclick="App.page.close_page_banner()" style="display: none;">
+            <i class="material-icons">close</i>
+        </a>
+        <div class="row m-0 mt-3 pl-3 pr-3">
+            <div class="scroll-slid style-3">
+                <div class="modal-divider">
+                    <p>Header Image</p>
+                </div>
+                {% for header_image in header_images %}
+                <div class="card shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                    <img src="{{header_image.image.url}}" />
+                </div>
+                {% endfor %}
+
+                <div class="modal-divider">
+                    <p>Footer Image</p>
+                </div>
+                {% for footer_image in footer_images %}
+                <div class="card shadow-none ui-draggable" data-image_id="{{footer_image.id}}">
+                    <img src="{{footer_image.image.url}}" />
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% for stopper in stoppers %}
+    <div class="border mb-3 page-wrapper">
+        <div class="stopper_name page_name ui-draggable ui-droppable header_banner"
+            style="width: 800px; height: {{stopper.header_height}}px" data-target="header">
+            {% if not stoppers.0.header_image.image %}
+            <div class="row align-items-center h-100 header_banner d-none">
+                <div class="empty-cell-dropdown-layout-container" style="position: absolute; top: 15px; right: 15px;">
+                    {% include "flyer_builder_manager/project/page/_cell_layout_dropdown.html" %}
+                </div>
+                <div class="col text-center">
+                    <a class="cell-add-product" href="javascript:void(0)"
+                        onclick="App.stopper.add_image_to_cell('header')">
+                        <i class="material-icons">
+                            add_circle
+                        </i>
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <img class="header_banner" src="{{stoppers.0.header_image.image.url}}"
+                style="width:100%; height:{{stopper.header_height}}px;" />
+            {% endif %}
+            <div class="page-cell-content-over-layer add-header-banner">
+                <a class="cell-add-product add-header-banner" href="javascript:void(0)"
+                    onclick="App.stopper.add_image_to_cell('header')"
+                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                    <i class="material-icons">
+                        add_circle
+                    </i>
+                </a>
+            </div>
+        </div>
+        <div class="page-stopper mb-0 pb-0 page-cell-content position-relative text-center h-460"
+            style="width: 800px; height: {{stopper.body_height}}px">
+            <div class="draggable stopper_image" data-name="stopper" data-id="{{stopper.id}} "
+                style="position: relative; touch-action: none; left: {{stopper.image_left}}px; top: {{stopper.image_top}}px;">
+                <img src="{{stopper.product.image_url}}" class="print-img main-cell-img align-self-end" />
+            </div>
+
+            <div class="info draggable stopper_info"
+                style="touch-action: none; left: {{stopper.info_left}}px; top:  {{stopper.info_top}}px;"
+                data-name="stopper" data-id="{{stopper.id}}">
+                <div class="price normal" style="color: #000000;">
+                    <sup>€</sup> <label
+                        style="font-size: 42px; font-family: 'Oswald', sans-serif;">{{stopper.product.price}}<stan
+                            style="font-size: 28px; font-family: 'Oswald', sans-serif;"></stan></label>
+
+                    <div>
+                        <div class="sub-title normal"
+                            style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                            {{stopper.product.description_brand}}
+                        </div>
+                        <div class="sub-ch-title normal"
+                            style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                            {{stopper.product.description_type}}
+                        </div>
+                        <div class="info-content normal"
+                            style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                            {{stopper.product.description_tastes}}
+                        </div>
+                        <div class="info-content normal"
+                            style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                            {{stopper.product.description_weight}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stopper_name page_name ui-draggable ui-droppable footer_banner"
+            style="width: 800px; height: {{stopper.footer_height}}px" data-target="footer">
+            {% if not stoppers.0.footer_image.image %}
+            <div class="row align-items-center h-100 d-none">
+            </div>
+            {% else %}
+            <div class="footer_image"
+                style="height:{{stopper.footer_height}}px; background-image: url({{stoppers.0.footer_image.image.url}});">
+            </div>
+            {% endif %}
+            <div class="page-cell-content-over-layer add-footer-banner">
+                <a class="cell-add-product add-footer-banner" href="javascript:void(0)"
+                    onclick="App.stopper.add_image_to_cell('footer')"
+                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                    <i class="material-icons">
+                        add_circle
+                    </i>
+                </a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+    {% for poster in posters %}
+    <div class="border mb-3 page-wrapper">
+        <div class="poster_name page_name ui-draggable ui-droppable header_banner"
+            style="width: 800px; height: {{poster.header_height}}px" data-target="header">
+            {% if not posters.0.header_image.image %}
+            <div class="row align-items-center h-100 header_banner d-none">
+                <div class="empty-cell-dropdown-layout-container" style="position: absolute; top: 15px; right: 15px;">
+                    {% include "flyer_builder_manager/project/page/_cell_layout_dropdown.html" %}
+                </div>
+                <div class="col text-center">
+                    <a class="cell-add-product" href="javascript:void(0)"
+                        onclick="App.poster.add_image_to_cell('header')">
+                        <i class="material-icons">
+                            add_circle
+                        </i>
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <img class="header_banner" src="{{posters.0.header_image.image.url}}"
+                style="width:100%; height:{{poster.header_height}}px;" />
+            {% endif %}
+            <div class="page-cell-content-over-layer add-header-banner">
+                <a class="cell-add-product" href="javascript:void(0)" id="add-header-banner"
+                    onclick="App.poster.add_image_to_cell('header')"
+                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                    <i class="material-icons">
+                        add_circle
+                    </i>
+                </a>
+            </div>
+        </div>
+        <div class="page-poster mb-0 pb-0 page-cell-content position-relative text-center h-460"
+            style="width: 800px; height: {{poster.body_height}}px">
+            <div class="draggable poster_image"
+                style="position: relative; touch-action: none; left: {{poster.image_left}}px; top: {{poster.image_top}}px;"
+                data-name="poster" data-id="{{poster.id}}">
+                <img src="{{poster.product.image_url}}" class="print-img main-cell-img align-self-end" />
+            </div>
+
+            <div class="info draggable poster_info"
+                style="touch-action: none; left: {{poster.info_left}}px; top: {{poster.info_top}}px;" data-name="poster"
+                data-id="{{poster.id}}">
+                <div class="price normal" style="color: #000000;">
+                    <sup>€</sup> <label
+                        style="font-size: 42px; font-family: 'Oswald', sans-serif;">{{poster.product.price}}<stan
+                            style="font-size: 28px; font-family: 'Oswald', sans-serif;"></stan></label>
+                </div>
+                <div>
+                    <div class="sub-title normal"
+                        style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                        {{poster.product.description_brand}}
+                    </div>
+                    <div class="sub-ch-title normal"
+                        style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                        {{poster.product.description_type}}
+                    </div>
+                    <div class="info-content normal"
+                        style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                        {{poster.product.description_tastes}}
+                    </div>
+                    <div class="info-content normal"
+                        style="color: #000000; font-family: 'Oswald', sans-serif; font-size: 12px;">
+                        {{poster.product.description_weight}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="poster_name page_name ui-draggable ui-droppable footer_banner"
+            style="width: 800px; height: {{poster.footer_height}}px" data-target="footer">
+            {% if not posters.0.footer_image.image %}
+            <div class="row align-items-center h-100 d-none">
+            </div>
+            {% else %}
+            <div class="footer_image"
+                style="height:{{poster.footer_height}}px; background-image: url({{posters.0.footer_image.image.url}});">
+            </div>
+            {% endif %}
+            <div class="page-cell-content-over-layer add-footer-banner">
+                <a class="cell-add-product" href="javascript:void(0) add-footer-banner"
+                    onclick="App.poster.add_image_to_cell('footer')"
+                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                    <i class="material-icons">
+                        add_circle
+                    </i>
+                </a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        App.stopper.init({{ project.id }});
+    App.poster.init({{ project.pk }});
+    $('.add-header-banner').hide();
+    $('.header_banner').mouseenter(function () {
+        $('.add-header-banner').show();
+    })
+    $('.header_banner').mouseleave(function () {
+        $('.add-header-banner').hide();
+    })
+    $('.add-footer-banner').hide();
+    $('.footer_banner').mouseenter(function () {
+        $('.add-footer-banner').show();
+    })
+    $('.footer_banner').mouseleave(function () {
+        $('.add-footer-banner').hide();
+    })
+    {% if stopper_reload %}
+    App.stopper.reload();
+    {% endif %}
+
+    {% if poster_reload %}
+    App.poster.reload();
+    {% endif %}
+    });
+
+
+
+    var coordinates = function (element, type) {
+        element = $(element);
+        var top = element.position().top;
+        var left = element.position().left;
+        console.log(top, left);
+        element_name = $(element).data('name')
+        obj_id = $(element).data('id')
+
+        $.ajax({
+            type: 'POST',
+            url: '/projects/{{project.id}}/' + element_name + '/edit_data_position',
+
+            data: {
+                'top': top,
+                'left': left,
+                'obj_id': obj_id,
+                'type': type
+            },
+            success: function (json) {
+            }
+        })
+    };
+
+
+
+    $('.stopper_image').draggable({
+        start: function (event, ui) {
+        },
+        stop: function () {
+            coordinates(this, 'image');
+        }
+    });
+    $('.stopper_info').draggable({
+        start: function () {
+        },
+        stop: function () {
+            coordinates(this, 'info');
+        }
+    });
+    $('.poster_image').draggable({
+        start: function (event, ui) {
+        },
+        stop: function () {
+            coordinates(this, 'image');
+        }
+    });
+    $('.poster_info').draggable({
+        start: function () {
+        },
+        stop: function () {
+            coordinates(this, 'info');
+        }
+    });
+</script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->

@@ -1,0 +1,175 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h3 class="mb-3">
+            <i class="material-icons">style</i>
+            {% trans 'Catalogo Prodotti' %}
+        </h3>
+    </div>
+    {% if request.user.can_modify_products %}
+    <div class="col-auto">
+        <a class="btn btn-primary mb-3" href="{% url 'flyer_builder_manager:add_product' %}">
+            <i class="material-icons">add_circle</i>
+            {% trans 'Crea nuovo prodotto' %}
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<form>
+    <table class="table table-hover table-light table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="10%"></th>
+                {% if request.user.is_superuser %}
+                <th>{% trans 'Cliente' %}</th>
+                {% endif %}
+                <th scope="col" width="">{% trans 'Codice' %}</th>
+                <th scope="col" width="">{% trans 'Descrizione' %}</th>
+                <th scope="col" width=""></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                {% if request.user.is_superuser %}
+                <td>
+                    <select name="seller" class="form-control" id="" onchange="App.show_loader(); return form.submit()">
+                        <option value="0">{% trans 'Scegli cliente' %}</option>
+                        {% for s in sellers %}
+                        <option value="{{ s.pk }}" {% if request.GET.seller==s.pk|stringformat:"i" %}selected{% endif
+                            %}>{{ s.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                {% endif %}
+                <td>
+                    <input type="text" class="form-control" name="code" autocomplete="off"
+                        value="{{ request.GET.code }}" onchange="App.show_loader(); return form.submit()">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="description" autocomplete="off"
+                        value="{{ request.GET.description }}" onchange="App.show_loader(); return form.submit()">
+                </td>
+                <td></td>
+            </tr>
+            {% if page_obj.paginator.count > 0 %}
+
+            {% for product in page_obj %}
+            <tr>
+                <td class="text-center">
+                    {% if product.image_url %}
+                    <img src="{{ product.image_url }}" class="rounded"
+                        style="max-height: 60px; width: auto; max-width: 60px;">
+                    {% else %}
+                    <em>{% trans 'nessuna' %}<br>{% trans 'immagine' %}</em>
+                    {% endif %}
+                </td>
+
+                {% if request.user.is_superuser %}
+                {% with codes=product.distribution_set.all %}
+                <td>
+                    {% if codes %}
+                    {% with codes|first as first_code %}
+                    {{first_code.seller.name}}
+                    {% endwith %}
+                    {% endif %}
+                </td>
+                {%endwith%}
+                {% endif %}
+
+                <td>{{ product.get_code }}</td>
+
+                <td>{{ product.get_description }}</td>
+                <td width="25%">
+                    <a class="btn btn-primary btn-sm"
+                        href="{% url 'flyer_builder_manager:show_product' product_id=product.pk  %}">
+                        <i class="material-icons">remove_red_eye</i> {% trans 'Vedi' %}
+                    </a>
+                    {% if request.user.can_modify_products %}
+                    <a class="btn btn-info btn-sm"
+                        href="{% url 'flyer_builder_manager:edit_product' product_id=product.pk  %}">
+                        <i class="material-icons">edit</i> {% trans 'Modifica' %}
+                    </a>
+                    {% endif %}
+                    <a class="btn btn-danger btn-sm"
+                        href="{% url 'flyer_builder_manager:delete_catalog_product' product_id=product.pk %}"
+                        onclick="return confirm('Sei sicuro di voler eliminare il prodotto?');">
+                        <i class="material-icons">delete</i> {% trans 'Elimina' %}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">{% trans 'Nessun prodotto trovato' %}</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</form>
+
+<nav>
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link"
+                href="?page=1{% if request.GET.code %}&code={{ request.GET.code }}{% endif %}{% if request.GET.description %}&description={{ request.GET.description }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Previous">
+                <span aria-hidden="true">
+                    <i class="material-icons">first_page</i>
+                    {% trans 'Inizio' %}
+                </span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ page_obj.previous_page_number }}{% if request.GET.code %}&code={{ request.GET.code }}{% endif %}{% if request.GET.description %}&description={{ request.GET.description }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Previous">
+                <span aria-hidden="true">
+                    <i class="material-icons">navigate_before</i>
+                    {% trans 'Precedente' %}
+                </span>
+            </a>
+        </li>
+        {% endif %}
+
+        <li class="page-item disabled">
+            <span class="page-link">
+                <i class="material-icons">file_copy</i>
+                {% trans 'Pagina' %} {{ page_obj.number }} {% trans 'di' %} {{ page_obj.paginator.num_pages }}
+                ({{page_obj.paginator.count}} prodotti)
+            </span>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ page_obj.next_page_number }}{% if request.GET.code %}&code={{ request.GET.code }}{% endif %}{% if request.GET.description %}&description={{ request.GET.description }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Next">
+                <span aria-hidden="true">
+                    <i class="material-icons">navigate_next</i>
+                    {% trans 'Successivo' %}
+                </span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.code %}&code={{ request.GET.code }}{% endif %}{% if request.GET.description %}&description={{ request.GET.description }}{% endif %}{% if request.GET.seller %}&seller={{ request.GET.seller }}{% endif %}"
+                aria-label="Next">
+                <span aria-hidden="true">
+                    <i class="material-icons">last_page</i>
+                    {% trans 'Fine' %}
+                </span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+{% endblock %}

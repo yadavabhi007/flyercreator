@@ -1,0 +1,206 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load static %}
+{% load i18n %}
+{% block project_menu %}
+<style>
+    .btndiv {
+        width: 20%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .btndiv .btn {
+        padding: 6px 7px !important;
+    }
+
+    .btndiv .btn-secondary,
+    .btndiv .btn-primary {
+        border-radius: 4px;
+    }
+</style>
+<hr>
+<nav class="nav flex-column">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+        <i class="material-icons">menu_book</i>
+        {% trans 'VOLANTINO' %}
+        <br>
+        <i class="material-icons" style="visibility: hidden;">menu_book</i>
+        {{project.name}}
+    </a>
+    <a class="nav-link  l1" href="/project/{{project.id}}/page/1">
+        <i class="material-icons ">article</i>
+        Pages
+    </a>
+    <a href="/project/{{project.id}}/product_list"
+        class="nav-link l1 {% if request.resolver_match.url_name == 'projects' %}active{% endif %}">
+        <i class="material-icons">format_list_bulleted</i> Product List
+    </a>
+    <a class="nav-link  l1" href="/project/{{project.id}}/stopper">
+        <i class="material-icons ">format_list_bulleted</i>
+        Stopper
+    </a>
+    <a class="nav-link  l1" href="/project/{{project.id}}/poster">
+        <i class="material-icons ">format_list_bulleted</i>
+        {% trans 'Locandina' %}
+    </a>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="row m-0">
+    <div class="card col title_1 shadow-sm pb-md-0 p-4 border-0">
+        <div class="card-header p-0 bg-transparent border-bottom-0">
+            <h3 class="pt-0 pb-4 font-weight-500 text-dark">
+                <i class="material-icons mr-2">format_list_bulleted</i>
+                All Product List
+            </h3>
+            <div class="main">
+                <form action="">
+                    <div class="input-group">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="qf" value="{{request.GET.qf}}"
+                                placeholder="Search Product by code,description and page.">
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btndiv">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                <a href="/project/{{project_id}}/product_list" class="btn btn-secondary">Reset</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-body productlist p-0 table-responsive" style="padding-top: 10px !important;">
+            <table class="table layout-table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Page</th>
+                        <th class="widtgh-250">Activity</th>
+                        <th class="text-right width-50">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="style-3 bodyscroll">
+                    {% for product in products %}
+                    <tr>
+                        <td class="image-td">
+                            <div class="width-80">
+                                <img src="{{product.image_url}}">
+                            </div>
+                        </td>
+                        <td>{{product.code}}</td>
+                        <td class="text-dark"> <span class="linethrough">&euro;2,85</span> &euro;{{product.price}} </td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.cell.page.number}}</td>
+                        <td>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input submit_update"
+                                    id="stopper_{{product.id}}" data-name="stopper" data-product_id="{{product.id}}" {%
+                                    if product.stopper %}checked{%endif%}>
+                                <label class="custom-control-label" for="stopper_{{product.id}}">Stopper</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input submit_update"
+                                    id="poster_{{product.id}}" data-name="poster" data-product_id="{{product.id}}" {% if
+                                    product.poster %}checked{%endif%}>
+                                <label class="custom-control-label" for="poster_{{product.id}}">Locandina</label>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <a id="delete_button_{{product.id}}"
+                                href="/project/{{project.id}}/{{product.id}}/delete_product"
+                                class="btn btn-outline-light danger btn-sm" data-toggle="tooltip" data-placement="top"
+                                title="Elimina"
+                                onclick="return confirm('Sei sicuro di voler eliminare il progetto \'{{ product.name }}\'?')"
+                                style="display: {{ product.initialization_in_progress|yesno:'none,inline-block' }}">
+                                <i class="material-icons">delete</i>
+                                <!-- Elimina -->
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">{% trans 'Dati non trovati' %}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <!--                    <tr>-->
+                    <!--                        <td class="image-td">-->
+                    <!--                            <div class="width-80">-->
+                    <!--                                <img src="../../../media/full.png">-->
+                    <!--                            </div>-->
+                    <!--                        </td>-->
+                    <!--                        <td class="text-dark"> <span class="linethrough">&euro;2,85</span> &euro;2,0 </td>-->
+                    <!--                        <td>Description</td>-->
+                    <!--                        <td>-->
+                    <!--                            <div class="custom-control custom-checkbox custom-control-inline">-->
+                    <!--                                <input type="checkbox" class="custom-control-input" id="customCheckDisabled">-->
+                    <!--                                <label class="custom-control-label" for="customCheckDisabled">Stopper</label>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="custom-control custom-checkbox custom-control-inline">-->
+                    <!--                                <input type="checkbox" class="custom-control-input" id="customCheckDisabled2">-->
+                    <!--                                <label class="custom-control-label" for="customCheckDisabled2">Locandina</label>-->
+                    <!--                            </div>-->
+                    <!--                        </td>-->
+                    <!--                        <td class="text-right">-->
+                    <!--                            <button type="button" class="btn"><i class="material-icons text-danger">delete</i></button>-->
+                    <!--                        </td>-->
+                    <!--                    </tr>-->
+                    <!--                    <tr>-->
+                    <!--                        <td class="image-td">-->
+                    <!--                            <div class="width-80">-->
+                    <!--                                <img src="../../../media/coc.png">-->
+                    <!--                            </div>-->
+                    <!--                        </td>-->
+                    <!--                        <td class="text-dark"> <span class="linethrough">&euro;2,85</span> &euro;2,0 </td>-->
+                    <!--                        <td>Description</td>-->
+                    <!--                        <td>-->
+                    <!--                            <div class="custom-control custom-checkbox custom-control-inline">-->
+                    <!--                                <input type="checkbox" class="custom-control-input" id="customCheckDisabled">-->
+                    <!--                                <label class="custom-control-label" for="customCheckDisabled">Stopper</label>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="custom-control custom-checkbox custom-control-inline">-->
+                    <!--                                <input type="checkbox" class="custom-control-input" id="customCheckDisabled2">-->
+                    <!--                                <label class="custom-control-label" for="customCheckDisabled2">Locandina</label>-->
+                    <!--                            </div>-->
+                    <!--                        </td>-->
+                    <!--                        <td class="text-right">-->
+                    <!--                            <button type="button" class="btn"><i class="material-icons text-danger">delete</i></button>-->
+                    <!--                        </td>-->
+                    <!--                    </tr>-->
+                </tbody>
+            </table>
+            {% include 'flyer_builder_manager/pagination.html' with query=products %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+
+<script>
+    $(document).ready(function () {
+        $('.submit_update').change(function () {
+            value = this.checked
+            product_id = $(this).data("product_id")
+            activity = $(this).data("name")
+            $.ajax({
+                type: 'POST',
+                url: '/project/{{project.id}}/' + product_id + '/update_product',
+                data: {
+                    'value': value,
+                    'activity': activity
+                },
+                success: function (json) {
+                }
+            })
+        });
+    });
+
+</script>
+{% endblock %}

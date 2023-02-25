@@ -1,0 +1,352 @@
+{% load i18n %}
+<div class="modal fade" id="editcolorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{% trans 'Modifica Stile' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="" class="col-sm-6 col-form-label">{% trans 'Prezzo' %}</label>
+                    <div class="col-sm-3">
+                        <input id="priceColor" type="color" class="form-control" name="pricetag" value="#2a2a2a">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-6 col-form-label">{% trans 'Descrizione 1' %}</label>
+                    <div class="col-sm-3">
+                        <input id="describoneColor" type="color" class="form-control" name="describoneColor"
+                            value="#563d7c">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-6 col-form-label">{% trans 'Descrizione 2' %}</label>
+                    <div class="col-sm-3">
+                        <input id="describtwoColor" type="color" class="form-control" name="describtwoColor"
+                            value="#ff0000">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-6 col-form-label">{% trans 'Descrizione 3' %}</label>
+                    <div class="col-sm-3">
+                        <input id="describthreeColor" type="color" class="form-control" name="describthreeColor"
+                            value="#563d7c">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-6 col-form-label">{% trans 'Descrizione 4' %}</label>
+                    <div class="col-sm-3">
+                        <input id="describfourColor" type="color" class="form-control" name="describfourColor"
+                            value="#2a2a2a">
+                    </div>
+                </div>
+                <div class="modal-divider">
+                    <p>Fonts</p>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-5 col-form-label">{% trans 'Prezzo Font (Integer)' %}</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="price_int_font">
+                            <option>{% trans 'Oswald' %}</option>
+                            <option>{% trans 'Poppins' %}</option>
+                            <option>{% trans 'PT Sans' %}</option>
+                            <option>{% trans 'Roboto' %}</option>
+                            <option>{% trans 'Staatliches' %}</option>
+                        </select>
+                    </div>
+                    <label for="" class="col-sm-1 col-form-label pl-0">Size</label>
+                    <div class="col-sm-2 pl-0">
+                        <select class="form-control pl-1" id="price_int_font_size">
+                            <option value="10">10px</option>
+                            <option value="11">11px</option>
+                            <option value="12">12px</option>
+                            <option value="14">14px</option>
+                            <option value="16">16px</option>
+                            <option value="18">18px</option>
+                            <option value="20">20px</option>
+                            <option value="22">22px</option>
+                            <option value="24">24px</option>
+                            <option value="26">26px</option>
+                            <option value="28">28px</option>
+                            <option value="36">36px</option>
+                            <option value="42">42px</option>
+                            <option value="48">48px</option>
+                            <option value="72">72px</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-5 col-form-label">{% trans 'Prezzo Font (Float)' %}</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="price_float_font">
+                            <option>{% trans 'Oswald' %}</option>
+                            <option>{% trans 'Poppins' %}</option>
+                            <option>{% trans 'PT Sans' %}</option>
+                            <option>{% trans 'Roboto' %}</option>
+                            <option>{% trans 'Staatliches' %}</option>
+                        </select>
+                    </div>
+                    <label for="" class="col-sm-1 col-form-label pl-0">Size</label>
+                    <div class="col-sm-2 pl-0">
+                        <select class="form-control pl-1" id="price_float_font_size">
+                            <option value="10">10px</option>
+                            <option value="11">11px</option>
+                            <option value="12">12px</option>
+                            <option value="14">14px</option>
+                            <option value="16">16px</option>
+                            <option value="18">18px</option>
+                            <option value="20">20px</option>
+                            <option value="22">22px</option>
+                            <option value="24">24px</option>
+                            <option value="26">26px</option>
+                            <option value="28">28px</option>
+                            <option value="36">36px</option>
+                            <option value="42">42px</option>
+                            <option value="48">48px</option>
+                            <option value="72">72px</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-5 col-form-label">{% trans 'Descrizione 1 Font' %}</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="description1_font">
+                            <option>{% trans 'Oswald' %}</option>
+                            <option>{% trans 'Poppins' %}</option>
+                            <option>{% trans 'PT Sans' %}</option>
+                            <option>{% trans 'Roboto' %}</option>
+                            <option>{% trans 'Staatliches' %}</option>
+                        </select>
+                    </div>
+                    <label for="" class="col-sm-1 col-form-label pl-0">Size</label>
+                    <div class="col-sm-2 pl-0">
+                        <select class="form-control pl-1" id="description1_font_size">
+                            <option value="10">10px</option>
+                            <option value="11">11px</option>
+                            <option value="12">12px</option>
+                            <option value="14">14px</option>
+                            <option value="16">16px</option>
+                            <option value="18">18px</option>
+                            <option value="20">20px</option>
+                            <option value="22">22px</option>
+                            <option value="24">24px</option>
+                            <option value="26">26px</option>
+                            <option value="28">28px</option>
+                            <option value="36">36px</option>
+                            <option value="42">42px</option>
+                            <option value="48">48px</option>
+                            <option value="72">72px</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-5 col-form-label">{% trans 'Descrizione (2,3,4) Font' %}</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="description_font">
+                            <option>{% trans 'Oswald' %}</option>
+                            <option>{% trans 'Poppins' %}</option>
+                            <option>{% trans 'PT Sans' %}</option>
+                            <option>{% trans 'Roboto' %}</option>
+                            <option>{% trans 'Staatliches' %}</option>
+                        </select>
+                    </div>
+                    <label for="" class="col-sm-1 col-form-label pl-0">Size</label>
+                    <div class="col-sm-2 pl-0">
+                        <select class="form-control pl-1" id="description_font_size">
+                            <option value="10">10px</option>
+                            <option value="11">11px</option>
+                            <option value="12">12px</option>
+                            <option value="14">14px</option>
+                            <option value="16">16px</option>
+                            <option value="18">18px</option>
+                            <option value="20">20px</option>
+                            <option value="22">22px</option>
+                            <option value="24">24px</option>
+                            <option value="26">26px</option>
+                            <option value="28">28px</option>
+                            <option value="36">36px</option>
+                            <option value="42">42px</option>
+                            <option value="48">48px</option>
+                            <option value="72">72px</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-divider">
+                    <p>Text Style</p>
+                </div>
+                <div class="row m-0 mb-3">
+                    <div class="col-sm-5 p-0 label">
+                        {% trans 'Price Stile' %}
+                    </div>
+                    <div class="col-sm-7 p-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="price_style" id="price_style_bold"
+                                value="bold">
+                            <label class="form-check-label" for="price_style_bold"><i
+                                    class="material-icons dp48">format_bold</i></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="price_style" id="price_style_italic"
+                                value="italic">
+                            <label class="form-check-label font-weight-bold" for="price_style_italic"><i
+                                    class="material-icons">format_italic</i></label>
+                        </div>
+                        <!--                    <div class="form-check form-check-inline">-->
+                        <!--                        <input class="form-check-input" type="radio" name=" id="" value="italic">-->
+                        <!--                        <label class="form-check-label font-weight-bold" for=""><i class="material-icons">format_strikethrough</i></label>-->
+                        <!--                    </div>-->
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="price_style" id="price_style_normal"
+                                value="normal">
+                            <label class="form-check-label" for="price_style_normal">Normal</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0 mb-3">
+                    <div class="col-sm-5 p-0 label">
+                        {% trans 'Descrizione 1 Stile' %}
+                    </div>
+                    <div class="col-sm-7 p-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description1_style"
+                                id="description1_style_bold" value="bold">
+                            <label class="form-check-label" for="description1_style_bold"><i
+                                    class="material-icons dp48">format_bold</i></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description1_style"
+                                id="description1_style_italic" value="italic">
+                            <label class="form-check-label font-weight-bold" for="description1_style_italic"><i
+                                    class="material-icons">format_italic</i></label>
+                        </div>
+                        <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name=" id="" value="italic">
+                        <label class="form-check-label font-weight-bold" for=""><i class="material-icons">format_strikethrough</i></label>
+                    </div> -->
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description1_style"
+                                id="description1_style_normal" value="normal">
+                            <label class="form-check-label" for="description1_style_normal">Normal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 mb-3">
+                    <div class="col-sm-5 p-0 label">
+                        {% trans 'Descrizione 2 Stile' %}
+                    </div>
+                    <div class="col-sm-7 p-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description2_style"
+                                id="description2_style_bold" value="bold">
+                            <label class="form-check-label" for="description2_style_bold"><i
+                                    class="material-icons dp48">format_bold</i></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description2_style"
+                                id="description2_style_italic" value="italic">
+                            <label class="form-check-label font-weight-bold" for="description2_style_italic"><i
+                                    class="material-icons">format_italic</i></label>
+                        </div>
+                        <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name=" id="" value="italic">
+                        <label class="form-check-label font-weight-bold" for=""><i class="material-icons">format_strikethrough</i></label>
+                    </div> -->
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description2_style"
+                                id="description2_style_normal" value="normal">
+                            <label class="form-check-label" for="description2_style_normal">Normal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 mb-3">
+                    <div class="col-sm-5 p-0 label">
+                        {% trans 'Descrizione 3 Stile' %}
+                    </div>
+                    <div class="col-sm-7 p-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description3_style"
+                                id="description3_style_bold" value="bold">
+                            <label class="form-check-label" for="description3_style_bold"><i
+                                    class="material-icons dp48">format_bold</i></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description3_style"
+                                id="description3_style_italic" value="italic">
+                            <label class="form-check-label font-weight-bold" for="description3_style_italic"><i
+                                    class="material-icons">format_italic</i></label>
+                        </div>
+                        <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name=" id="" value="italic">
+                        <label class="form-check-label font-weight-bold" for=""><i class="material-icons">format_strikethrough</i></label>
+                    </div> -->
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description3_style"
+                                id="description3_style_normal" value="normal">
+                            <label class="form-check-label" for="description3_style_normal">Normal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 mb-3">
+                    <div class="col-sm-5 p-0 label">
+                        {% trans 'Descrizione 4 Stile' %}
+                    </div>
+                    <div class="col-sm-7 p-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description4_style"
+                                id="description4_style_bold" value="bold">
+                            <label class="form-check-label" for="description4_style_bold"><i
+                                    class="material-icons dp48">format_bold</i></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description4_style"
+                                id="description4_style_italic" value="italic">
+                            <label class="form-check-label font-weight-bold" for="description4_style_italic"><i
+                                    class="material-icons">format_italic</i></label>
+                        </div>
+                        <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name=" id="" value="italic">
+                        <label class="form-check-label font-weight-bold" for=""><i class="material-icons">format_strikethrough</i></label>
+                    </div> -->
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="description4_style"
+                                id="description4_style_normal" value="normal">
+                            <label class="form-check-label" for="description4_style_normal">Normal</label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-check mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="applyProduct"
+                        value="applyProduct" checked>
+                    <label class="form-check-label" for="applyProduct">
+                        Apply for this product
+                    </label>
+                </div>
+                <div class="form-check mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="applyPage" value="applyPage">
+                    <label class="form-check-label" for="applyPage">
+                        Apply for this page
+                    </label>
+                </div>
+                <div class="form-check disabled mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="applyProject"
+                        value="applyProject">
+                    <label class="form-check-label" for="applyProject">
+                        Apply for whole project
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Annulla' %}</button>
+                <button type="button" class="btn btn-primary" onclick="App.page.save_product_style_data()">{% trans
+                    'Salva' %}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block css %}
+<style>
+    .proj_pg_content {
+        right: 0px;
+    }
+</style>
+{%endblock%}
+
+{% block project_menu %}
+<hr />
+<nav class="nav flex-column">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+        <i class="material-icons">menu_book</i>
+        {% trans 'VOLANTINO' %}
+        <br />
+        <i class="material-icons" style="visibility: hidden;">menu_book</i>
+        {{project.name}}
+    </a>
+    <a class="nav-link l1" href="/project/{{project.id}}/page/1">
+        <i class="material-icons">article</i>
+        Pages
+    </a>
+    <a href="/project/{{project.id}}/product_list"
+        class="nav-link l1 {% if request.resolver_match.url_name == 'projects' %}active{% endif %}"> <i
+            class="material-icons">format_list_bulleted</i> Product List </a>
+    <a class="nav-link l1" href="/project/{{project.id}}/stopper">
+        <i class="material-icons">format_list_bulleted</i>
+        Stopper
+    </a>
+    <a class="nav-link l1" href="/project/{{project.id}}/poster">
+        <i class="material-icons">format_list_bulleted</i>
+        Locandina
+    </a>
+    <a class="nav-link l1" href="javascript:void(0);" onclick="App.stopper.edit_page_style()">
+        <i class="material-icons">aspect_ratio</i>
+        Page Style
+    </a>
+    <a class="nav-link l1" href="javascript:void(0);" onclick="App.stopper.edit_page_banner()">
+        <i class="material-icons">image</i>
+        Banner Theme
+    </a>
+    <a id="generate-pdf-link" class="nav-link l1" href="javascript:void(0)" onclick="App.project.generate_stopper_pdf()"
+        style="display: {{ project.pdf_generation_in_progress|yesno:'none,block' }}">
+        <i class="material-icons">picture_as_pdf</i>
+        {% trans 'Genera Stopper PDF' %}
+    </a>
+    <a id="download-pdf-link" class="nav-link l1"
+        href="{% if project.project_stopper_pdf_file %}{{ project.project_stopper_pdf_file.url }}{% endif %}"
+        target="_blank" style="display: {{ project.project_stopper_pdf_file|yesno:'block,none' }}" download>
+        <i class="material-icons">cloud_download</i>
+        {% trans 'Scarica PDF' %}
+        <br>
+        <span style="font-size: 12px; font-style: italic; font-weight: normal">
+            {% trans 'Generato:' %}
+            <span id="pdf-generated-datetime">
+                {% if project.project_pdf_file %}
+                {{ project.pdf_last_generation|date:'d/m/Y' }} {{ project.pdf_last_generation|time:'H:i' }}
+                {% endif %}
+            </span>
+        </span>
+    </a>
+    <a id="generating-pdf-link" class="nav-link l1 disabled" href="javascript:void(0)" target="_blank"
+        style="color: #007bff; font-weight: bold; display: {{ project.pdf_generation_in_progress|yesno:'block,none' }}">
+        <i class="material-icons animated infinite bounce slow">picture_as_pdf</i>
+        {% trans 'Generazione PDF' %}
+        <br>
+        <i class="material-icons" style="visibility: hidden">picture_as_pdf</i>
+        {% trans 'in corso...' %}
+    </a>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="proj_pg_header">
+    <div class="container-fluid h-100">
+        <div class="row align-items-center justify-content-between h-100 m-0">
+            <div>
+                <div style="max-width: 200px; font-size: 18px;" class="text-truncate title_1">
+                    <h3 class="font-weight-500 text-dark"><i class="material-icons">menu_book</i> {{project.name}}
+                        Stoppers</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="proj_pg_content style-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <div id="page-wrapper">
+                    {% include "flyer_builder_manager/project/_stopper_poster.html"%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block modals %}
+{% include "flyer_builder_manager/project/page/_edit_page_style_modal.html" %}
+{% endblock %}

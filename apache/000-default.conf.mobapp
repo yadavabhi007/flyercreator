@@ -1,0 +1,23 @@
+<VirtualHost 80.211.66.53:80>
+
+    Alias /static /root/Project/flyercreator/flyer_builder/static
+    Alias /media /root/Project/flyercreator/media
+    <Directory /root/Project/flyercreator/flyer_builder/static>
+        Require all granted
+    </Directory>
+    <Directory /root/Project/flyercreator/media>
+        Require all granted
+    </Directory>
+    <Directory /root/Project/flyercreator/flyer_builder>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonprocess flyercreator python-path=/root/Project/flyercreator python-home=/root/Project/flyercreator/venv
+    WSGIProcessGroup flyercreator
+    WSGIScriptAlias / /root/Project/flyercreator/flyer_builder/wsgi.py
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>

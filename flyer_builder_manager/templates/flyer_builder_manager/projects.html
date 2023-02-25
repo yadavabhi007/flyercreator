@@ -1,0 +1,121 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load i18n %}
+{% block content %}
+<div class="row m-0">
+    <div class="card col title_1 shadow-sm p-4 border-0">
+        <div class="card-header p-0 bg-transparent border-bottom-0">
+            <h3 class="pt-0 pb-4 font-weight-500 text-dark">
+                <i class="material-icons mr-2">update</i>
+                {% trans 'Progetti in corso' %}
+            </h3>
+        </div>
+        <table class="table table-hover mb-0 layout-table">
+            <thead>
+                <tr>
+                    <th> {% trans 'Nome' %}</th>
+                    <th> {% trans 'Data creazione' %}</th>
+                    <th> {% trans 'Ultima modifica' %}</th>
+                    <th class="text-nowrap"> {% trans 'Azione' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in working_projects %}
+                {% if project.initialization_in_progress %}
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        App.set_project_initializing_polling({{ project.id }});
+                    });
+                </script>
+                {% endif %}
+                <tr id="project_{{project.id}}" class="{{ project.initialization_in_progress|yesno:'table-info,' }}">
+                    <td>{{ project.name }}</th>
+                    <td>{{ project.created_at }}</th>
+                    <td>{{ project.updated_at }}</th>
+                    <td>
+                        {% if project.excel_import_failed %}
+                        <button type="button" class="btn btn-dark" disabled>
+                            <i class="material-icons">error</i>
+                            {% trans 'Importazione da Excel fallita' %}
+                        </button>
+                        {% else %}
+                        <a id="edit_button_{{project.id}}"
+                            href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.id page_number=1 %}"
+                            class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="top"
+                            title="Modifica"
+                            style="display: {{ project.initialization_in_progress|yesno:'none,inline-block' }}">
+                            <i class="material-icons">edit</i>
+                            <!-- Modifica -->
+                        </a>
+                        <a id="delete_button_{{project.id}}"
+                            href="{% url 'flyer_builder_manager:delete_project' uid=project.id %}"
+                            class="btn btn-outline-light danger btn-sm" data-toggle="tooltip" data-placement="top"
+                            title="Elimina"
+                            onclick="return confirm('Sei sicuro di voler eliminare il progetto \'{{ project.name }}\'?')"
+                            style="display: {{ project.initialization_in_progress|yesno:'none,inline-block' }}">
+                            <i class="material-icons">delete</i>
+                            <!-- Elimina -->
+                        </a>
+                        <button id="initializing_project_label_{{project.id}}" type="button"
+                            class="btn btn-light btn-sm" disabled
+                            style="display: {{ project.initialization_in_progress|yesno:'inline-block,none' }}">
+                            <i class="material-icons animated infinite bounce slow">build</i>
+                            {% trans 'Inizializzazione corso...' %}'
+                        </button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% if projects|length == 0 %}
+                <tr>
+                    <td colspan="4" class="text-center font-italic">{% trans 'Nessun progetto' %}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row mt-4 m-0">
+    <div class="card col title_1 shadow-sm p-4 border-0">
+        <div class="card-header p-0 bg-transparent border-bottom-0">
+            <h3 class="pt-0 pb-4 font-weight-500 text-dark">
+                <i class="material-icons mr-2">done_outline</i>
+                {% trans 'Progetti terminati' %}
+            </h3>
+        </div>
+        <table class="table table-hover mb-0 layout-table">
+            <thead>
+                <tr>
+                    <th scope="col">{% trans 'Nome' %}</th>
+                    <th scope="col">{% trans 'Data creazione' %}</th>
+                    <th scope="col">{% trans 'Data chiusura' %}</th>
+                    <th scope="col">{% trans 'Stato' %}</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in completed_projects %}
+                <tr>
+                    <td>{{ project.name }}</th>
+                    <td>{{ project.created_at }}</th>
+                    <td>{{ project.updated_at }}</th>
+                    <td>{{ project.status_label }}</td>
+                    <td>
+                        {% if project.project_pdf_file %}
+                        <a class="btn btn-sm btn-secondary" target="_blank" href="{{ project.project_pdf_file.url }}"
+                            download><i class="material-icons mr-1">cloud_download</i> {% trans 'Scarica PDF' %}</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% if projects|length == 0 %}
+                <tr>
+                    <td colspan="5" class="text-center font-italic">{% trans 'Nessun progetto' %}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

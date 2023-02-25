@@ -1,0 +1,153 @@
+{% load i18n %}
+<div class="modal fade" id="new-empty-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="project_model_content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'Crea volantino' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="create-empty-project-form" method="POST"
+                action="{% url 'flyer_builder_manager:create_empty_project' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">Nome</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="name" id="name" required autocomplete="off">
+                        </div>
+
+                        <label for="" class="col-sm-3 col-form-label">Formato pagina</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="page_format" id="page_format" required
+                                autocomplete="off">
+                                {% for format in flyer_format %}
+                                <option value={{format.id}}>{{format.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="category" id="category">
+                                {% for category in image_category %}
+                                <option value={{category.id}}>{{category.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <label for="" class="col-sm-3 col-form-label">Numero di pagine</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="number_of_pages" type="number" value="3"
+                                name="number_of_pages">
+                            <!--                            <select class="form-control" name="number_of_pages">-->
+                            <!--                                <option value=1>1</option>-->
+                            <!--                                <option value=2>2</option>-->
+                            <!--                                <option value=3>3</option>-->
+                            <!--                                <option value=4>4</option>-->
+                            <!--                            </select>-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">Formato Stopper</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="stopper_format" id="stopper_format">
+                                {% for format in stopper_format %}
+                                <option value={{format.id}}>{{format.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <label for="" class="col-sm-3 col-form-label">Formato Locandina</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="poster_format" id="poster_format">
+                                {% for format in poster_format %}
+                                <option value={{format.id}}>{{format.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">Numero predefinito di prodotti</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="number_of_products" id="number_of_products">
+                                <!-- {% for product in number_of_products %}
+                                <option value={{product.id}}>{{product.name}}</option>  
+                                {% endfor %} -->
+                                <option value='{ "row" :2 , "columns": 2 }'>2x1</option>
+                                <option value='{ "row" :1 , "columns": 2 }'>1x2</option>
+                                <option value='{ "row" :2 , "columns": 2 }'>2x2</option>
+                                <option value='{ "row" :3 , "columns": 2 }'>3x2</option>
+                                <option value='{ "row" :2 , "columns": 3 }'>2x3</option>
+                                <option value='{ "row" :3 , "columns": 3 }'>3x3</option>
+                                <option value='{ "row" :3 , "columns": 4 }'>3x4</option>
+                                <option value='{ "row" :4 , "columns": 3 }'>4x3</option>
+                                <option value='{ "row" :4 , "columns": 4 }'>4x4</option>
+                                <option value='{ "row" :4 , "columns": 5 }'>4x5</option>
+                                <option value='{ "row" :5 , "columns": 4 }'>5x4</option>
+                                <option value='{ "row" :5 , "columns": 5 }'>5x5</option>
+                            </select>
+                        </div>
+
+                        <!--                        <label for="" class="col-sm-3 col-form-label">Intestazione predefinita</label>-->
+                        <!--                        <div class="col-sm-3">-->
+                        <!--                            <select class="form-control" name="">-->
+                        <!--                                <option value={{format.id}}>header-1</option>-->
+                        <!--                                <option value={{format.id}}>header-2</option>                             -->
+                        <!--                            </select>-->
+                        <!--                        </div>-->
+                        <!--                        <label for="" class="col-sm-3 col-form-label">Piè di pagina predefinito</label>-->
+                        <!--                        <div class="col-sm-3">-->
+                        <!--                            <select class="form-control" name="">-->
+                        <!--                                <option value={{format.id}}>footer-1</option>-->
+                        <!--                                <option value={{format.id}}>footer-2</option>-->
+
+                        <!--                            </select>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" id="create_project" class=" btn btn-primary " value="Create ">Crea</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block js %}
+
+<script>
+    $(document).ready(function () {
+        $('#create_project').click(function () {
+            var name = $("#name").val();
+            var page_format = $("#page_format").val();
+            var category = $("#category").val();
+            var stopper_format = $("#stopper_format").val();
+            var poster_format = $("#poster_format").val();
+            var number_of_pages = $("#number_of_pages").val();
+            var number_of_products = $("#number_of_products").val();
+            console.log(name);
+            $.ajax({
+                type: 'POST',
+                url: '/get_themes',
+                data: {
+                    'name': name,
+                    'page_format': page_format,
+                    'category': category,
+                    'stopper_format': stopper_format,
+                    'poster_format': poster_format,
+                    'number_of_pages': number_of_pages,
+                    'number_of_products': number_of_products,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    $("#project_model_content").html(data)
+                }
+            })
+        });
+    });
+</script>
+{% endblock %}

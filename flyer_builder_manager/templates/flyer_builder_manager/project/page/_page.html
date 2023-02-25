@@ -1,0 +1,288 @@
+{% load i18n %}
+
+<style>
+    .btndiv {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0px 10px 0px;
+
+    }
+
+    .btndiv .btn-secondary,
+    .btndiv .btn-primary {
+        border-radius: 4px;
+    }
+
+    .createBtn {
+        width: 100%;
+    }
+
+
+    img.sidenva-leftthumb {
+        width: 85% !important;
+        min-height: auto;
+        margin: 20px auto 20px auto !important;
+        border-radius: 4px !important;
+    }
+
+    .modal-divider p {
+        width: 100%;
+    }
+
+    .main_card_div {
+        background-color: #5e7a88;
+        ;
+    }
+
+    .main_div {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #5e7a88;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, .125);
+        border-radius: 0.25rem;
+        margin-bottom: 13px;
+        padding: 10px;
+    }
+
+    #theme_header_banner,
+    #theme_footer_banner,
+    #theme_full_page,
+    #theme_half_page {
+        /* width: 95%; */
+        width: 200px;
+    }
+
+    .btndiv .btn {
+        padding: 6px 7px !important;
+    }
+</style>
+<div id="mySidenav" class="sidenav sidenav_left shadow-lg" style="width:0px;overflow:scroll;height: 90vh">
+    <a href="javascript:void(0)" class="closebtn" onclick="App.page.close_page_banner()" style="display:none">
+        <i class="material-icons">close</i>
+    </a>
+    <div class="row m-0 mt-3 pl-3 pr-3">
+        <div class="scroll-slid style-3">
+            <div id="theme_header_banner">
+                <div class="modal-divider">
+                    <p>Header Image</p>
+                </div>
+                <div class="btndiv">
+                    <button type="button" class="btn btn-primary createBtn">{% trans 'Creare Intestazione' %}</button>
+                </div>
+                <div class="modal-divider">
+                    <p>{% trans 'immagine di intestazione predefinita' %}</p>
+                </div>
+                {% for header_image in header_default %}
+                <div class="main_div">
+                    <div class="card_header card shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                        <img src="{{header_image.image.url}}">
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="modal-divider">
+                    <p>{% trans "immagine dell'intestazione dell'utente" %}</p>
+                </div>
+
+
+                {% for header_image in header_images %}
+                <div class="main_div">
+                    <div class="card_header card shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                        <img src="{{header_image.image.url}}" class="sidenva-leftthumb">
+                    </div>
+                    <div class="btndiv ">
+                        <button type="button" class="btn btn-secondary">{% trans 'Modificare' %}</button>
+                        <button type="button" class="btn btn-primary">{% trans 'Eliminare' %}</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="theme_footer_banner">
+                <div class="modal-divider">
+                    <p>{% trans "Immagine del piè di pagina" %}</p>
+                </div>
+                <div class="btndiv">
+                    <button type="button" class="btn btn-primary createBtn">{% trans 'Creare' %}</button>
+                </div>
+                <div class="modal-divider">
+                    <p>{% trans "Immagine del piè di pagina predefinita" %}</p>
+                </div>
+                {% for header_image in footer_images %}
+                <div class="main_div">
+                    <div class="card_footer card shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                        <img src="{{header_image.image.url}}">
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="modal-divider">
+                    <p>{% trans "Immagine del piè di pagina dell'utente" %}</p>
+                </div>
+                {% for footer_image in footer_images %}
+                <div class="main_div">
+                    <div class="card_footer card shadow-none ui-draggable" data-image_id="{{footer_image.id}}">
+                        <img src="{{footer_image.image.url}}">
+                    </div>
+                    <div class="btndiv">
+                        <button type="button" class="btn btn-secondary">{% trans 'Modificare' %}</button>
+                        <button type="button" class="btn btn-primary">{% trans 'Eliminare' %}</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="theme_full_page">
+                <div class="modal-divider">
+                    <p>{% trans "Immagine a pagina intera" %}</p>
+                </div>
+                <div class="btndiv">
+                    <button type="button" class="btn btn-primary createBtn">{% trans 'Creare' %}</button>
+                </div>
+                <div class="modal-divider">
+                    <p>{% trans "immagine a pagina intera predefinita" %}</p>
+                </div>
+                {% for header_image in full_page_default %}
+                <div class="main_div">
+                    <div class="card card_full_page shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                        <img src="{{header_image.image.url}}">
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="modal-divider">
+                    <p>{% trans "immagine a pagina intera dell'utente" %}</p>
+                </div>
+                {% for full_page_image in full_page_images %}
+                <div class="main_div">
+                    <div class="card card_full_page shadow-none ui-draggable" data-image_id="{{full_page_image.id}}">
+                        <img src="{{full_page_image.image.url}}">
+                    </div>
+                    <div class="btndiv">
+                        <button type="button" class="btn btn-secondary">{% trans 'Modificare' %}</button>
+                        <button type="button" class="btn btn-primary">{% trans 'Eliminare' %}</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="theme_half_page">
+                <div class="modal-divider">
+                    <p>{% trans "Immagine a mezza pagina" %}</p>
+                </div>
+                <div class="btndiv">
+                    <button type="button" class="btn btn-primary createBtn">{% trans 'Creare' %}</button>
+                </div>
+                <div class="modal-divider">
+                    <p>{% trans "immagine mezza pagina predefinita" %}</p>
+                </div>
+                {% for header_image in half_page_default %}
+                <div class="main_div">
+                    <div class="card card_half_page shadow-none ui-draggable" data-image_id="{{header_image.id}}">
+                        <img src="{{header_image.image.url}}">
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="modal-divider">
+                    <p>{% trans "immagine di mezza pagina dell'utente" %}</p>
+                </div>
+                {% for half_page_image in half_page_images %}
+                <div class="main_div">
+                    <div class="card card_half_page shadow-none ui-draggable" data-image_id="{{half_page_image.id}}">
+                        <img src="{{half_page_image.image.url}}">
+                    </div>
+                    <div class="btndiv">
+                        <button type="button" class="btn btn-secondary">{% trans 'Modificare' %}</button>
+                        <button type="button" class="btn btn-primary">{% trans 'Eliminare' %}</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page_name_header {% if page.product_page_style.header_per == 100 %} page_name_full_page {% endif %} {% if page.product_page_style.header_per == 50 %} page_name_half_page {% endif %} page_name ui-draggable ui-droppable "
+    id="header_banner" style="width: 800px; height: {{page.header_height}}px" data-target="header">
+
+    {% if not header_banner %}
+    <div class="row align-items-center h-100 header_banner d-none">
+        <div class="empty-cell-dropdown-layout-container" style="position: absolute; top: 15px; right: 15px;">
+            {% include "flyer_builder_manager/project/page/_cell_layout_dropdown.html" %}
+        </div>
+        <div class="col text-center">
+            <a class="cell-add-product" href="javascript:void(0)"
+                onclick="App.page.add_image_to_cell({{header_banner.id}},'header')">
+                <i class="material-icons">
+                    add_circle
+                </i>
+            </a>
+        </div>
+    </div>
+    {% else %}
+    <img class="header_banner" src="{{header_banner.image.image.url}}"
+        style="width:100%; height:{{page.header_height}}px;">
+    {% endif %}
+    <div class="page-cell-content-over-layer" id="add-header-banner">
+        <a class="cell-add-product" href="javascript:void(0)" id="add-header-banner"
+            onclick="App.page.add_image_to_cell({{header_banner.id}},'header')"
+            style="position:absolute;left:50%;top:50%;transform:translate(-50% , -50%)">
+            <i class="material-icons">
+                add_circle
+            </i>
+        </a>
+    </div>
+</div>
+
+{% if not page.product_page_style.header_per == 100%}
+
+<div class="page_container" style="width: 800px; height: {{page.body_height}}px;" id="half_page">
+    {% for cell in page.cells.all %} {% include "flyer_builder_manager/project/page/_cell.html" %} {% endfor %}
+</div>
+{% endif %}
+<div class="page_name_footer {% if page.product_page_style.footer_per == 50 %} page_name_half_page {% endif %} page_name ui-draggable ui-droppable"
+    id="footer_banner" style="width: 800px; height: {{page.footer_height}}px" data-target="footer">
+    {% if not footer_banner %}
+    <div class="row align-items-center h-100 d-none"></div>
+    {% else %}
+    <div id="header_image"
+        style="height:{{page.footer_height}}px; background-image: url({{footer_banner.image.image.url}});">
+    </div>
+    {% endif %}
+    <div class="page-cell-content-over-layer" id="add-footer-banner">
+        <a class="cell-add-product" href="javascript:void(0)" id="add-footer-banner"
+            onclick="App.page.add_image_to_cell({{ footer_banner.id}},'footer')"
+            style="position:absolute;left:50%;top:50%;transform:translate(-50% , -50%)">
+            <i class="material-icons">
+                add_circle
+            </i>
+        </a>
+    </div>
+</div>
+
+<div id="all-page" style="display:none; width:800px">
+    {% include "flyer_builder_manager/project/page/_page_pdf.html" %}
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        App.page.init({{ page.project.pk }}, {{ page.number }});
+    $('#add-header-banner').hide();
+    $('#header_banner').mouseenter(function () {
+        $('#add-header-banner').show();
+    })
+    $('#header_banner').mouseleave(function () {
+        $('#add-header-banner').hide();
+    })
+    $('#add-footer-banner').hide();
+    $('#footer_banner').mouseenter(function () {
+        $('#add-footer-banner').show();
+    })
+    $('#footer_banner').mouseleave(function () {
+        $('#add-footer-banner').hide();
+    })
+    });
+</script>

@@ -1,0 +1,587 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="proj_pg_header">
+    <div class="container-fluid h-100">
+        <div class="row align-items-center justify-content-between h-100 m-0">
+            <div>
+                <div style="max-width: 200px; font-size: 18px;" class="text-truncate title_1">
+                    <h3 class="font-weight-500 text-dark">
+                        <i class="material-icons">menu_book</i> {{project.name}}
+                    </h3>
+                </div>
+            </div>
+
+            <div class="proj_pg_breadcrumb ml-auto">
+                <div>
+
+                </div>
+                <ul class="proj_pg_breadcrumb-btns">
+                    <li>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <a class="btn btn-sm btn-scondary {% if not page.has_previous %}disabled{% endif %}"
+                                    href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.pk page_number=page.number|add:-1  %}">
+                                    <i class="material-icons">
+                                        arrow_back
+                                    </i>
+                                    <!-- Pagina precedente -->
+                                </a>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-scondary dropdown-toggle" type="button"
+                                    id="page_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="material-icons">
+                                        insert_drive_file
+                                    </i>
+                                    {% trans 'Pagina' %} {{page.number}} (di {{project.pages.count}})
+                                </button>
+                                <div class="dropdown-menu page-nav-dropdown scrollable"
+                                    aria-labelledby="page_dropdownMenuButton">
+                                    {% for page_nav in project.pages.all|dictsort:"number" %}
+                                    <a class="dropdown-item {% if page_nav.number == page.number %}disabled font-weight-bold{% endif %}"
+                                        href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.pk page_number=page_nav.number %}">
+                                        <span
+                                            class="badge badge-pill badge-{% if page_nav.number == page.number %}dark{% else %}secondary{% endif %} mr-1">{{page_nav.number}}
+                                        </span>
+                                        <span id="page_nav_name_label_{{page_nav.number}}">
+                                            {{page_nav.name|default:"--"}}
+                                        </span>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="input-group-append">
+                                <a class="btn btn-sm btn-scondary {% if not page.has_next %}disabled{% endif %}"
+                                    href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.pk page_number=page.number|add:1  %}">
+                                    <i class="material-icons">
+                                        arrow_forward
+                                    </i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <button class="btn btn-sm btn-scondary dropdown-toggle " type="button"
+                            id="page_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="small material-icons">
+                                settings
+                            </i>
+                            {% trans 'Impostazioni pagina' %}
+                        </button>
+                        <div class="dropdown-menu scrollable" aria-labelledby="page_dropdownMenuButton">
+                            <h6 class="dropdown-header">Nuova pagina</h6>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.new_project_page('prev')">
+                                <i class="material-icons">skip_previous</i>
+                                {% trans 'Inserisci prima di questa' %}
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.new_project_page('next')">
+                                <i class="material-icons">skip_next</i>
+                                {% trans 'Inserisci dopo di questa' %}
+                            </a>
+                            <h6 class="dropdown-header">Azioni</h6>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.show_clear_project_page_modal()">
+                                <i class="material-icons">cancel_presentation</i>
+                                {% trans 'Pulisci pagina' %}
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.show_switch_project_page_modal()">
+                                <i class="material-icons">repeat</i>
+                                {% trans 'Scambia pagina' %}
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.show_delete_project_page_modal()">
+                                <i class="material-icons">delete</i>
+                                {% trans 'Elimina pagina' %}
+                            </a>
+                            <h6 class="dropdown-header">Struttura</h6>
+                            {% for template in request.user.profile.client.page_layout_templates.all %}
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.change_page_template({{template.id}})"
+                                style="font-weight: {% if page.template.code == template.code %}bold{% else %}normal{% endif %};">
+                                <i class="material-icons">border_clear</i>
+                                {{template.code}}
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn btn-sm btn-scondary h-30" type="button" onclick="App.zoom('out')"
+                                    {% if request.user.profile.project_page_zoom==70 %}disabled{% endif %}>
+                                    <i class="material-icons" style="font-size: 20px">
+                                        remove
+                                    </i>
+                                </button>
+                            </div>
+                            <input type="text" class="form-control text-center h-30"
+                                placeholder="Zoom {{request.user.profile.project_page_zoom}}%" disabled>
+                            <div class="input-group-append">
+                                <button class="btn btn-sm btn-scondary h-30" type="button" onclick="App.zoom('in')" {%
+                                    if request.user.profile.project_page_zoom==110 %}disabled{% endif %}>
+                                    <i class="material-icons" style="font-size: 20px">
+                                        add
+                                    </i>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="col-auto">
+                <div style="max-width: 200px; font-size: 18px;" class="text-truncate">
+                    <i class="material-icons">menu_book</i> {{project.name}} 
+                </div>
+            </div> -->
+
+            <!-- <div class="col-auto">
+                <a class="btn btn-light {% if not page.has_previous %}disabled{% endif %}"
+                    href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.pk page_number=page.number|add:-1  %}">
+                    <i class="material-icons">
+                        arrow_back
+                    </i>
+                </a>
+            </div>
+
+            <div class="col-auto">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="page_dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">
+                            insert_drive_file
+                        </i>
+                        Pagina {{page.number}} (di {{project.pages.count}})
+                    </button>
+                    <div class="dropdown-menu page-nav-dropdown scrollable" aria-labelledby="page_dropdownMenuButton">
+                        {% for page_nav in project.pages.all|dictsort:"number" %}
+                        <a class="dropdown-item {% if page_nav.number == page.number %}disabled font-weight-bold{% endif %}"
+                            href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.pk page_number=page_nav.number %}">
+                            <span
+                                class="badge badge-pill badge-{% if page_nav.number == page.number %}dark{% else %}secondary{% endif %} mr-1">{{page_nav.number}}
+                            </span>
+                            <span id="page_nav_name_label_{{page_nav.number}}">
+                                {{page_nav.name|default:"--"}}
+                            </span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <a class="btn btn-light {% if not page.has_next %}disabled{% endif %}"
+                    href="{% url 'flyer_builder_manager:edit_project_page' project_id=project.pk page_number=page.number|add:1  %}">
+                    <i class="material-icons">
+                        arrow_forward
+                    </i>
+                </a>
+            </div> -->
+
+            <!-- <div class="col-auto">
+                <button class="btn btn-info" onclick="App.page.new_project_page()">
+                    <i class="material-icons">
+                        add
+                    </i>
+                    Nuova pagina
+                </button>
+            </div> -->
+
+            <!-- <div class="col-auto">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle " type="button" id="page_dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">
+                            settings_applications
+                        </i>
+                        Impostazioni pagina
+                    </button>
+                    <div class="dropdown-menu scrollable" aria-labelledby="page_dropdownMenuButton">
+                        <h6 class="dropdown-header">Nuova pagina</h6>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="App.page.new_project_page('prev')">
+                            <i class="material-icons">skip_previous</i>
+                            Inserisci prima di questa
+                        </a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="App.page.new_project_page('next')">
+                            <i class="material-icons">skip_next</i>
+                            Inserisci dopo di questa
+                        </a>
+                        <h6 class="dropdown-header">Azioni</h6>
+                        <a class="dropdown-item" href="javascript:void(0)"
+                            onclick="App.page.show_clear_project_page_modal()">
+                            <i class="material-icons">cancel_presentation</i>
+                            Pulisci pagina
+                        </a>
+                        <a class="dropdown-item" href="javascript:void(0)"
+                            onclick="App.page.show_switch_project_page_modal()">
+                            <i class="material-icons">repeat</i>
+                            Scambia pagina
+                        </a>
+                        <a class="dropdown-item" href="javascript:void(0)"
+                            onclick="App.page.show_delete_project_page_modal()">
+                            <i class="material-icons">delete</i>
+                            Elimina pagina
+                        </a>
+                        <h6 class="dropdown-header">Struttura</h6>
+                        {% for template in request.user.profile.client.page_layout_templates.all %}
+                        <a class="dropdown-item" href="javascript:void(0)"
+                            onclick="App.page.change_page_template({{template.id}})" style="font-weight: {% if page.template.code == template.code %}bold{% else %}normal{% endif %};">
+                            <i class="material-icons">border_clear</i>
+                            {{template.code}}
+                        </a>
+                        {% endfor %}
+                    </div> 
+                </div>
+            </div>-->
+
+            <!--  <div class="col-auto">
+               <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-light" type="button" onclick="App.zoom('out')"
+                            {% if request.user.profile.project_page_zoom == 70 %}disabled{% endif %}>
+                            <i class="material-icons" style="font-size: 20px">
+                                remove
+                            </i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control text-center"
+                        placeholder="Zoom {{request.user.profile.project_page_zoom}}%" disabled style="width: 140px">
+                    <div class="input-group-append">
+                        <button class="btn btn-light" type="button" onclick="App.zoom('in')"
+                            {% if request.user.profile.project_page_zoom == 110 %}disabled{% endif %}>
+                            <i class="material-icons" style="font-size: 20px">
+                                add
+                            </i>
+                        </button>
+                    </div>
+                </div> 
+            </div>-->
+        </div>
+    </div>
+</div>
+<div class="proj_pg_content style-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <div id="page-wrapper">
+                    {% include "flyer_builder_manager/project/page/_page.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="proj_pg_prod_avail">
+    <div class="mt-3 title_1">
+        <h6 class="text-center font-weight-500 text-dark">
+            <i class="material-icons" style="color: rgba(96, 125, 139, 0.55);">move_to_inbox</i>
+            {% trans 'Prodotti disponibili' %}
+        </h6>
+    </div>
+    <hr>
+    <div id="available-products-list">
+        {% include "flyer_builder_manager/project/page/_available_products.html" %}
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        App.project.init({{ project.pk }}, {{ project.pdf_generation_in_progress | yesno: 'true,false' }});
+    });
+</script>
+{% endblock %}
+
+{% block css %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'flyer_builder_manager/css/project_page.css' %}" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" /> -->
+{% endblock %}
+
+{% block project_menu %}
+<hr>
+
+<style>
+    .main-nav-info ul li {
+        list-style: none;
+    }
+
+    .main-nav-info ul li a {
+        color: #fff;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+</style>
+
+<script>
+    $(document).on("click", ".card-hide", function () {
+        $(this).parent().next('.card-show').toggle(500);
+    });
+</script>
+
+<!-- Nitin menu Start Here-->
+<div class="main-nav-info">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+        <i class="material-icons">menu_book</i>
+        {% trans 'VOLANTINO' %}
+        <br>
+        <i class="material-icons" style="visibility: hidden;">menu_book</i>
+        {{project.name}}
+    </a>
+    <ul>
+        <li><a href="javascript:;" class="card-hide">{% trans 'VOLANTINO' %}</a></li>
+        <ul class="card-show" style="display: none;">
+            <li>
+                <a class="nav-link  l1" href="/project/{{project.id}}/page/1">
+                    <i class="material-icons ">article</i>
+                    Pages
+                </a>
+            </li>
+            <li>
+                <a href="/project/{{project.id}}/product_list"
+                    class="nav-link l1 {% if request.resolver_match.url_name == 'projects' %}active{% endif %}">
+                    <i class="material-icons">format_list_bulleted</i> Product List
+                </a>
+            </li>
+            <li>
+                <a class="nav-link  l1" href="/project/{{project.id}}/stopper">
+                    <i class="material-icons ">format_list_bulleted</i>
+                    Stopper
+                </a>
+            </li>
+            <li>
+                <a class="nav-link  l1" href="/project/{{project.id}}/poster">
+                    <i class="material-icons ">format_list_bulleted</i>
+                    Locandina
+                </a>
+            </li>
+            <li>
+                <a class="nav-link l1" href="javascript:void(0)"
+                    onclick="App.project.show_update_products_data_by_excel_modal()">
+                    <i class="material-icons">system_update_alt</i>
+                    {% trans 'Aggiorna dati' %}
+                    <br>
+                    <i class="material-icons" style="visibility: hidden">system_update_alt</i>
+                    {% trans 'prodotti da Excel' %}
+                </a>
+            </li>
+        </ul>
+    </ul>
+    <ul>
+        <li><a href="javascript:;" class="card-hide">Style</a></li>
+        <ul class="card-show" style="display: none;">
+            <li>
+                <a class="nav-link l1" href="javascript:void(0);" onclick="App.page.edit_cell_style()">
+                    <i class="material-icons ">border_color</i>
+                    Cell Style
+                </a>
+            </li>
+            <li>
+                <a class="nav-link l1" href="javascript:void(0);" onclick="App.page.edit_page_style()">
+                    <i class="material-icons ">aspect_ratio</i>
+                    Page Style
+                </a>
+            </li>
+
+        </ul>
+    </ul>
+    <ul>
+        <li><a href="javascript:;" class="card-hide">Graphic</a></li>
+        <ul class="card-show" style="display: none;">
+            <li>
+                <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_header()">
+                    <i class="material-icons ">border_color</i>
+                    Header
+                </a>
+            </li>
+            <li>
+                <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_footer()">
+                    <i class="material-icons ">aspect_ratio</i>
+                    Footer
+                </a>
+            </li>
+            <li>
+                <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_full_page()">
+                    <i class="material-icons ">aspect_ratio</i>
+                    Full Page
+                </a>
+            </li>
+            <li>
+                <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_half_page()">
+                    <i class="material-icons ">aspect_ratio</i>
+                    Half Page
+                </a>
+            </li>
+            <!-- <li>
+                <a class="nav-link l1" href="javascript:void(0);" onclick="App.page.edit_page_banner()">
+                    <i class="material-icons ">image</i>
+                    Banner Theme
+                </a>
+            </li> -->
+        </ul>
+    </ul>
+
+
+    <ul>
+        <li><a href="javascript:;" class="card-hide">Export</a></li>
+        <ul class="card-show" style="display: none;">
+            <li>
+                <a id="generate-pdf-link" class="nav-link l1" href="javascript:void(0)"
+                    onclick="App.project.generate_pdf()"
+                    style="display: {{ project.pdf_generation_in_progress|yesno:'none,block' }}">
+                    <i class="material-icons">picture_as_pdf</i>
+                    {% trans 'Genera PDF' %}
+                </a>
+            </li>
+            <li>
+                <a id="download-pdf-link" class="nav-link l1"
+                    href="{% if project.project_pdf_file %}{{ project.project_pdf_file.url }}{% endif %}"
+                    target="_blank" style="display: {{ project.project_pdf_file|yesno:'block,none' }}" download>
+                    <i class="material-icons">cloud_download</i>
+                    {% trans 'Scarica PDF' %}
+                    <br>
+                    <span style="font-size: 12px; font-style: italic; font-weight: normal">
+                        {% trans 'Generato:' %}
+                        <span id="pdf-generated-datetime">
+                            {% if project.project_pdf_file %}
+                            {{ project.pdf_last_generation|date:'d/m/Y' }} {{ project.pdf_last_generation|time:'H:i' }}
+                            {% endif %}
+                        </span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a id="generating-pdf-link" class="nav-link l1 disabled" href="javascript:void(0)" target="_blank"
+                    style="color: #007bff; font-weight: bold; display: {{ project.pdf_generation_in_progress|yesno:'block,none' }}">
+                    <i class="material-icons animated infinite bounce slow">picture_as_pdf</i>
+                    {% trans 'Generazione PDF' %}
+                    <br>
+                    <i class="material-icons" style="visibility: hidden">picture_as_pdf</i>
+                    {% trans 'in corso...' %}
+                </a>
+            </li>
+            <li>
+                {% if project.excel_import_log %}
+                <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_excel_import_report_modal()">
+                    <i class="material-icons">subtitles</i>
+                    {% trans 'Report importazione' %}
+                    <br>
+                    <i class="material-icons" style="visibility: hidden">subtitles</i>
+                    {% trans 'da Excel' %}
+                </a>
+                {% endif %}
+            </li>
+
+        </ul>
+    </ul>
+</div>
+
+
+<!-- Nitin menu End Here-->
+<!-- <nav class="nav flex-column">
+    
+    <a class="nav-link  l1" href="/project/{{project.id}}/page/1">
+        <i class="material-icons ">article</i>
+        Pages
+    </a>
+    <a href="/project/{{project.id}}/product_list" class="nav-link l1 {% if request.resolver_match.url_name == 'projects' %}active{% endif %}">
+        <i class="material-icons">format_list_bulleted</i> Product List
+    </a>
+    <a class="nav-link  l1" href="/project/{{project.id}}/stopper">
+        <i class="material-icons ">format_list_bulleted</i>
+        Stopper
+    </a>
+    <a class="nav-link  l1" href="/project/{{project.id}}/poster" >
+        <i class="material-icons ">format_list_bulleted</i>
+        Locandina
+    </a>
+    <a class="nav-link l1" href="javascript:void(0);" onclick="App.page.edit_cell_style()">
+        <i class="material-icons ">border_color</i>
+        Cell Style
+    </a>
+    <a class="nav-link l1" href="javascript:void(0);" onclick="App.page.edit_page_style()">
+        <i class="material-icons ">aspect_ratio</i>
+        Page Style
+    </a>
+    <a class="nav-link l1" href="javascript:void(0);" onclick="App.page.edit_page_banner()">
+        <i class="material-icons ">image</i>
+        Banner Theme
+    </a>
+    <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_update_products_data_by_excel_modal()">
+        <i class="material-icons">system_update_alt</i>
+        {% trans 'Aggiorna dati' %}
+        <br>
+        <i class="material-icons" style="visibility: hidden">system_update_alt</i>
+        {% trans 'prodotti da Excel' %}
+    </a>
+    <a id="generate-pdf-link" class="nav-link l1" href="javascript:void(0)" onclick="App.project.generate_pdf()"
+        style="display: {{ project.pdf_generation_in_progress|yesno:'none,block' }}">
+        <i class="material-icons">picture_as_pdf</i>
+        {% trans 'Genera PDF' %}
+    </a>
+    <a id="download-pdf-link" class="nav-link l1"
+        href="{% if project.project_pdf_file %}{{ project.project_pdf_file.url }}{% endif %}" target="_blank"
+        style="display: {{ project.project_pdf_file|yesno:'block,none' }}" download>
+        <i class="material-icons">cloud_download</i>
+        {% trans 'Scarica PDF' %}
+        <br>
+        <span style="font-size: 12px; font-style: italic; font-weight: normal">
+            {% trans 'Generato:' %}
+            <span id="pdf-generated-datetime">
+                {% if project.project_pdf_file %}
+                {{ project.pdf_last_generation|date:'d/m/Y' }} {{ project.pdf_last_generation|time:'H:i' }}
+                {% endif %}
+            </span>
+        </span>
+    </a>
+    <a id="generating-pdf-link" class="nav-link l1 disabled" href="javascript:void(0)" target="_blank"
+        style="color: #007bff; font-weight: bold; display: {{ project.pdf_generation_in_progress|yesno:'block,none' }}">
+        <i class="material-icons animated infinite bounce slow">picture_as_pdf</i>
+        {% trans 'Generazione PDF' %}
+        <br>
+        <i class="material-icons" style="visibility: hidden">picture_as_pdf</i>
+        {% trans 'in corso...' %}
+    </a>
+   
+    {% if project.excel_import_log %}
+    <a class="nav-link l1" href="javascript:void(0)" onclick="App.project.show_excel_import_report_modal()">
+        <i class="material-icons">subtitles</i>
+        {% trans 'Report importazione' %}
+        <br>
+        <i class="material-icons" style="visibility: hidden">subtitles</i>
+        {% trans 'da Excel' %}
+    </a>
+    {% endif %}
+</nav> -->
+{% endblock %}
+
+{% block js %}
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+<script type="text/javascript" src="{% static 'flyer_builder_manager/js/project.js' %}"></script>
+<script type="text/javascript" src="{% static 'flyer_builder_manager/js/page.js' %}"></script> -->
+{% endblock %}
+
+{% block modals %}
+{% include "flyer_builder_manager/project/page/_edit_product_modal.html" %}
+{% include "flyer_builder_manager/project/page/_edit_product_style_modal.html" %}
+{% include "flyer_builder_manager/project/page/_delete_page_modal.html" %}
+{% include "flyer_builder_manager/project/page/_clear_page_modal.html" %}
+{% include "flyer_builder_manager/project/page/_switch_page_modal.html" %}
+{% include "flyer_builder_manager/project/page/_send_to_agency_modal.html" %}
+{% include "flyer_builder_manager/project/_update_products_data_by_excel_modal.html" %}
+{% include "flyer_builder_manager/project/page/_edit_cell_style_modal.html" %}
+{% include "flyer_builder_manager/project/page/_edit_page_style_modal.html" %}
+
+{% if project.excel_import_log %}
+{% include "flyer_builder_manager/project/_excel_import_report_modal.html" %}
+{% endif %}
+
+{% endblock %}

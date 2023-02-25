@@ -1,0 +1,31 @@
+{% load page_extras %}
+{% for page in project.pages.all|dictsort:"number" %}
+<div class="page-wrapper" style="width:800px;" data-page="{{page.number}}">
+    <div class="page_name ui-draggable ui-droppable " id="header_banner"
+        style="width: 800px; height: {{page.header_height}}px">
+        {% if not header_banner %}
+        <div class="row align-items-center h-100 header_banner d-none">
+        </div>
+        {% else %}
+        <img class="header_banner" src="{{ page|page_banner:'header' }}"
+            style="width:100%; height:{{page.header_height}}px;">
+        {% endif %}
+    </div>
+    <div class="page_container" style="width: 800px; height: {{page.body_height}}px;">
+        {% for cell in page.cells.all %}
+        {% include "flyer_builder_manager/project/page/_cell.html" %}
+        {% endfor %}
+    </div>
+    <div class="page_name ui-draggable ui-droppable" id="footer_banner"
+        style="width: 800px; height: {{page.footer_height}}px">
+        {% if not header_banner %}
+        <div class="row align-items-center h-100 d-none">
+        </div>
+        {% else %}
+        <div id="header_image"
+            style="height:{{page.footer_height}}px; background-image: url({{page|page_banner:'footer'}});">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}

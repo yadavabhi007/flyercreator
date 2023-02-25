@@ -1,0 +1,153 @@
+{% load i18n %}
+<div class="modal fade" id="search-image-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title only-search">
+                    <i class="material-icons">search</i> {% trans 'Cerca prodotto' %}
+                </h5>
+                <h5 class="modal-title search-and-select" style="display: none">
+                    <i class="material-icons">add_circle</i> {% trans 'Aggiungi prodotto' %}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input pl-2" id="headerImageFile"
+                            onchange="readURL(this);">
+                        <label class="custom-file-label" for="inputGroupFile02">{% trans 'Choose file' %}</label>
+                    </div>
+                </div>
+                <div class="browse_imgShow">
+                    <img class="blah" src="#" alt="No image" />
+                </div>
+                {% if page %}
+                <div class="modal-divider"></div>
+                <div class="form-check mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="apply_for" value="applyPage" checked>
+                    <label class="form-check-label" for="applyProduct">
+                        {% trans 'Apply for this page' %}
+                    </label>
+                </div>
+                <div class="form-check mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="apply_for" value="applyProject">
+                    <label class="form-check-label" for="applyPage">
+                        {% trans 'Apply for whole project' %}
+                    </label>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button> {% if page %}
+                <button type="button" class="btn btn-primary" onclick="App.page.save_header_image_data()">Save</button>
+                {% endif %} {% if stoppers %}
+                <button type="button" class="btn btn-primary"
+                    onclick="App.stopper.save_header_image_data()">Save</button> {% endif %} {% if posters %}
+                <button type="button" class="btn btn-primary"
+                    onclick="App.poster.save_header_image_data()">Save</button> {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="search-image-modal-footer" tabindex="-1" role="dialog" aria-hidden="true"
+    data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title only-search">
+                    <i class="material-icons">search</i> {% trans 'Cerca prodotto' %}
+                </h5>
+                <h5 class="modal-title search-and-select" style="display: none">
+                    <i class="material-icons">add_circle</i> {% trans 'Aggiungi prodotto' %}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input pl-2" id="footerImageFile"
+                            onchange="readURL(this);">
+                        <label class="custom-file-label" for="inputGroupFile02">{% trans 'Choose file' %}</label>
+                    </div>
+                </div>
+                <div class="browse_imgShow">
+                    <img class="blah" src="#" alt="No image" />
+                </div>
+                {% if page %}
+                <div class="modal-divider"></div>
+                <div class="form-check mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="apply_for" value="applyPage" checked>
+                    <label class="form-check-label" for="applyProduct">
+                        {% trans 'Apply for this page' %}
+                    </label>
+                </div>
+                <div class="form-check mb-3 row m-0">
+                    <input class="form-check-input" type="radio" name="apply_for" value="applyProject">
+                    <label class="form-check-label" for="applyPage">
+                        {% trans 'Apply for whole project' %}
+                    </label>
+                </div>
+                {% endif %}
+                <!-- <form id="search-product-form">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-form-label">Immagine</label>
+                        <div class="col-sm-8">
+                            <div class="input-group"> -->
+                <!-- <input type="text" class="form-control" name="code" id="search-image-form_code"
+                                    autocomplete="off"> -->
+                <!-- <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button"
+                                        onclick="App.search_product.search_header_banner({{project.client.pk}},{{project.pk}},{{page.pk}},{{footer_banner.pk}},'footer')">Cerca per immagine</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="search-image-result-footer">
+
+                </div> -->
+                <!--OLD_Code-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Chiudi' %}</button> {% if
+                page %}
+                <button type="button" class="btn btn-primary" onclick="App.page.save_footer_image_data()">Save</button>
+                {% endif %} {% if stoppers %}
+                <button type="button" class="btn btn-primary"
+                    onclick="App.stopper.save_footer_image_data()">Save</button> {% endif %} {% if posters %}
+                <button type="button" class="btn btn-primary"
+                    onclick="App.poster.save_footer_image_data()">Save</button> {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // App.search_product.init();
+    });
+</script>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.blah')
+                    .attr('src', e.target.result)
+                    .width('100%')
+                    .height('auto');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

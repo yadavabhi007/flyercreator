@@ -1,0 +1,175 @@
+{% load i18n %}
+
+{% if not request.user.profile.client.only_catalog %}
+<div class="new-project-container">
+    <div class="dropdown text-center">
+        <button type="button" class="btn dropdown-toggle btn-sm theme-btn" type="button"
+            id="dropdown-new-project-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">add</i>
+            {% trans 'Nuovo volantino' %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdown-new-project-button">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#new-project-modal">
+                <i class="material-icons mr-2">description</i>
+                {% trans 'Crea da Excel' %}
+            </a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#new-empty-project-modal">
+                <i class="material-icons mr-2">border_clear</i>
+                {% trans 'Crea vuoto' %}
+            </a>
+        </div>
+    </div>
+</div>
+<hr>
+<nav class="nav flex-column">
+    <li>
+        <a class="nav-link {% if request.resolver_match.url_name == 'projects' %}active{% endif %}"
+            href="{% url 'flyer_builder_manager:projects' %}">
+            <i class="material-icons">dashboard</i>
+            {% trans 'Dashboard' %}
+        </a>
+    </li>
+</nav>
+<!-- <hr> -->
+{% endif %}
+<nav class="nav flex-column">
+    <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+        <i class="material-icons">style</i>
+        CATALOGO PRODOTTI
+    </a> -->
+    <!--    <li>-->
+    <!--        <a class="nav-link {% if request.resolver_match.url_name in 'catalog_products,edit_product,add_product' %}active{% endif %}" href="{% url 'flyer_builder_manager:catalog_products' %}" tabindex="-1" aria-disabled="true">-->
+    <!--            <i class="material-icons">style</i>-->
+    <!--            Catalogo Prodotti-->
+    <!--        </a>-->
+    <!--    </li>-->
+    <!--    <li>-->
+    <!--        <a class="nav-link {% if request.resolver_match.url_name in 'campaign' %}active{% endif %}" href="{% if request.user.is_superuser %}{% url 'flyer_builder_manager:campaign' 0 %}{% else %}{% url 'flyer_builder_manager:campaign'  request.user.profile.client.seller_code %}{% endif %}" tabindex="-1" aria-disabled="true">-->
+    <!--            <i class="material-icons ">assignment</i>-->
+    <!--            Campagne-->
+    <!--        </a>-->
+    <!--    </li>-->
+    <!--    <li class="side-navmenu">-->
+    <!--        <a class="nav-link" href="javascript:void(0);" onclick="openNav()">-->
+    <!--            <i class="material-icons ">print</i>-->
+    <!--            Stampa-->
+    <!--        </a>-->
+    <!--    </li>-->
+    <!-- <a class="nav-link l1 {% if request.resolver_match.url_name == 'catalog_products' %}active{% endif %}"
+        href="{% url 'flyer_builder_manager:catalog_products' %}">
+        <i class="material-icons">list_alt</i>
+        Lista
+    </a> -->
+    <!-- <a class="nav-link l1 {% if request.resolver_match.url_name == 'add_product' %}active{% endif %}"
+        href="{% url 'flyer_builder_manager:add_product' %}">
+        <i class="material-icons">add_circle</i>
+        Aggiungi
+    </a>
+    <a class="nav-link l1" href="javascript:void(0)" onclick="App.search_product.open_search_product_modal(false)">
+        <i class="material-icons">search</i>
+        Cerca
+    </a> -->
+
+    <!--right-sidenav for header_footer banner-->
+
+    <!--Page print-->
+
+    <!--    <div id="printDracrib" class="print-page">-->
+    <!--        <div class="row m-0 justify-content-center align-item-center scrolldiv style-3">-->
+    <!--            <div class="col-5 p-0">-->
+    <!--                <div class="border mb-3">-->
+    <!--                    &lt;!&ndash; <div class="p-header p-2 col-12" style="background:#ffbdbd;">-->
+    <!--                        <p class="mb-0">Header Banner</p>-->
+    <!--                    </div> &ndash;&gt;-->
+    <!--                   <div class="page-stopper mb-0 pb-0 page-cell-content position-relative text-center h-460">-->
+    <!--                       <div class="draggable">-->
+    <!--                            <img src="../../../media/coc.png" class="print-img main-cell-img align-self-end" >-->
+    <!--                       </div>-->
+
+    <!--                       <div class="info draggable">-->
+    <!--                            <div class="price normal" style="color:#000000">-->
+    <!--                                <sup>€</sup> <label style="font-size:42px; font-family:'Oswald', sans-serif;">2<stan style="font-size:28px; font-family:'Oswald', sans-serif;">,30</stan></label>-->
+    <!--                            </div>-->
+    <!--                            <div>-->
+    <!--                                <div class="sub-title normal" style="color:#000000; font-family:'Oswald', sans-serif; font-size:12px;">-->
+    <!--                                    Descrizione 1-->
+    <!--                                </div>-->
+    <!--                                <div class="sub-ch-title normal" style="color:#000000; font-family: 'Oswald', sans-serif; font-size:12px;">-->
+    <!--                                    Descrizione 2-->
+    <!--                                </div>-->
+    <!--                                <div class="info-content normal" style="color:#000000; font-family: 'Oswald', sans-serif; font-size:12px;">-->
+    <!--                                    Descrizione 3-->
+    <!--                                </div>-->
+    <!--                                <div class="info-content normal" style="color:#000000; font-family: 'Oswald', sans-serif;font-size:12px;">-->
+    <!--                                    Descrizione 4-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                   </div>-->
+    <!--                   <div class="p-footer col-12 text-center" style="background:#5f523f;">-->
+    <!--                        <p class="mb-0">15/06/2021</p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="border mb-3">-->
+    <!--                    &lt;!&ndash; <div class="p-header p-2 col-12" style="background:#ffbdbd;">-->
+    <!--                        <p class="mb-0">Header Banner</p>-->
+    <!--                    </div> &ndash;&gt;-->
+    <!--                   <div class="page-stopper mb-0 pb-0 page-cell-content position-relative text-center h-460">-->
+    <!--                       <div class="draggable">-->
+    <!--                            <img src="../../../media/full.png" class="print-img main-cell-img align-self-end" >-->
+    <!--                       </div>-->
+
+    <!--                       <div class="info draggable">-->
+    <!--                            <div class="price normal" style="color:#000000">-->
+    <!--                                <sup>€</sup> <label style="font-size:42px; font-family:'Oswald', sans-serif;">2<stan style="font-size:28px; font-family:'Oswald', sans-serif;">,30</stan></label>-->
+    <!--                            </div>-->
+    <!--                            <div>-->
+    <!--                                <div class="sub-title normal" style="color:#000000; font-family:'Oswald', sans-serif; font-size:12px;">-->
+    <!--                                    Descrizione 1-->
+    <!--                                </div>-->
+    <!--                                <div class="sub-ch-title normal" style="color:#000000; font-family: 'Oswald', sans-serif; font-size:12px;">-->
+    <!--                                    Descrizione 2-->
+    <!--                                </div>-->
+    <!--                                <div class="info-content normal" style="color:#000000; font-family: 'Oswald', sans-serif; font-size:12px;">-->
+    <!--                                    Descrizione 3-->
+    <!--                                </div>-->
+    <!--                                <div class="info-content normal" style="color:#000000; font-family: 'Oswald', sans-serif;font-size:12px;">-->
+    <!--                                    Descrizione 4-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                   </div>-->
+    <!--                   <div class="p-footer col-12 text-center" style="background:#5f523f;">-->
+    <!--                        <p class="mb-0">15/06/2021</p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="pl-3 text-left mt-2 print-btn">-->
+    <!--            <a href="javascript:void(0)" class="btn btn-secondary mr-1" onclick="closeNav()">-->
+    <!--                <i class="material-icons">close</i> Close-->
+    <!--            </a>-->
+    <!--            <a href="javascript:void(0);" class="btn btn-danger mr-1">-->
+    <!--                <i class="material-icons ">print</i> Stampa-->
+    <!--            </a>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+</nav>
+<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+<script>
+    function openNav() {
+        document.getElementById("printDracrib").style.width = "83.5%";
+    }
+    function closeNav() {
+        document.getElementById("printDracrib").style.width = "0";
+    }
+    $(document).ready(function () {
+        var $draggables = $('.draggable').draggabilly({
+            // contain to parent element
+            containment: true
+        });
+    });
+</script>

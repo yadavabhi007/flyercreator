@@ -1,0 +1,97 @@
+{% load l10n %}
+{% load i18n %}
+<div class="page_cell {{page.border_style}}"
+    style="top: {{cell.render_top|unlocalize}}%; left: {{cell.render_left|unlocalize}}%; width: {{cell.width}}px; height: {{cell.height}}px; border-color:{{page.border_color}}; border-width:{{page.border_width}}px"
+    ; data-cell-id="{{cell.pk}}">
+    {% if cell.has_product %}
+    <div class="page-cell-content h-100 d-flex justify-content-end" style="overflow: visible">
+        <div class="page-cell-content-over-layer" style="overflow: visible"
+            title="___&#10;Tipo blocco: {{cell.product.flyer_block_name}}&#10;___&#10;Stopper: {{cell.product.stopper|yesno:'Sì,No'}}&#10;___&#10;Locandina: {{cell.product.poster|yesno:'Sì,No'}}&#10;___&#10;Note: {{cell.product.note|default:''}}&#10;___&#10;Codice cartellino: {{cell.product.tag_code|default:''}}&#10;___&#10;Anziché: {{cell.product.price_without_discount|default:''|floatformat:'2'}}&#10;___&#10;Sconto: {{cell.product.discount_percentage|default:''|floatformat:'0'}}&#10;___&#10;Numero pezzi: {{cell.product.pieces_number|default:''}}&#10;___&#10;Max acquistabili: {{cell.product.max_purchasable_pieces|default:''}}&#10;___&#10;Punti: {{cell.product.points|default:''}}&#10; &nbsp;">
+            <div class="row justify-content-between no-gutters" style="overflow: visible">
+                <i class="material-icons drag-indicator">
+                    open_with
+                </i>
+                <div class="col-auto" style="overflow: visible">
+                    <div class="dropdown cellicon">
+                        <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                            id="cell_dropdownMenuButton_{{cell.product.pk}}" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="material-icons">settings</i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.edit_product({{cell.product.pk}})">
+                                <i class="material-icons">edit</i> {% trans 'Modifica' %}
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.edit_product_style({{cell.product.pk}})">
+                                <i class="material-icons">format_color_fill</i> {% trans 'Modifica Stile' %}
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.move_cell_product_to_available_products({{cell.pk}})">
+                                <i class="material-icons">move_to_inbox</i> {% trans 'Sposta in' %} <br>{% trans
+                                'prodotti disponibili' %}
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="App.page.delete_project_product({{cell.product.pk}})">
+                                <i class="material-icons">delete</i> {% trans 'Elimina' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto align-self-end cellicon">
+                    {% include "flyer_builder_manager/project/page/_cell_layout_dropdown.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="price {{cell.product.price_style}}" style="color:{{cell.product.price_color}}">
+                <sup>&euro;</sup> <label
+                    style="font-size:{{cell.product.price_integer_font_size}}px; font-family:'{{cell.product.price_integer_font}}', sans-serif;">{{cell.product.price_int}}
+                    <stan
+                        style="font-size:{{cell.product.price_float_font_size}}px; font-family:'{{cell.product.price_float_font}}', sans-serif;">
+                        ,{{cell.product.price_fraction}}</stan></label>
+            </div>
+            <div class="sub-title {{cell.product.description_brand_style}}"
+                style="color:{{cell.product.description_brand_color}}; font-family:'{{cell.product.description1_font}}', sans-serif; font-size:{{cell.product.description1_font_size}}px;">
+                {{cell.product.description_brand|default:""}}
+            </div>
+            <div class="sub-ch-title {{cell.product.description_type_style}}"
+                style="color:{{cell.product.description_type_color}}; font-family: '{{cell.product.description2_font}}', sans-serif; font-size:{{cell.product.description2_font_size}}px;">
+                {{cell.product.description_type|default:""}}
+            </div>
+            <div class="info-content {{cell.product.description_tastes_style}}"
+                style="color:{{cell.product.description_tastes_color}}; font-family: '{{cell.product.description2_font}}', sans-serif; font-size:{{cell.product.description2_font_size}}px;">
+                {{cell.product.description_tastes|default:""}}
+            </div>
+            <div class="info-content {{cell.product.description_weight_style}}"
+                style="color:{{cell.product.description_weight_color}}; font-family: '{{cell.product.description2_font}}', sans-serif;font-size:{{cell.product.description2_font_size}}px;">
+                {{cell.product.description_weight|default:""}}
+            </div>
+        </div>
+
+        <div class="block-icons">
+            {% for icon in cell.product.block_icons %}
+            <img src="{{icon}}" style="height: 40px; margin-right: 10px"> {% endfor %}
+        </div>
+
+        <img src="{{cell.product.image_url}}" class="main-cell-img align-self-end">
+    </div>
+    <!-- {{cell.product.description_brand}} -->
+
+    {% else %}
+    <div class="row align-items-center h-100">
+        <div class="empty-cell-dropdown-layout-container" style="position: absolute; top: 15px; right: 15px;">
+            {% include "flyer_builder_manager/project/page/_cell_layout_dropdown.html" %}
+        </div>
+        <div class="col text-center">
+            <a class="cell-add-product" href="javascript:void(0)" onclick="App.page.add_product_to_cell({{cell.id}})">
+                <i class="material-icons">
+                    add_circle
+                </i>
+            </a>
+
+        </div>
+    </div>
+    {% endif %}
+</div>

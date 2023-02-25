@@ -1,0 +1,34 @@
+{% load i18n %}
+<div class="modal fade" id="delete-page-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'Elimina pagina' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% trans 'Scegli come procedere' %}
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="mt-3 btn btn-block btn-primary"
+                            onclick="App.page.delete_project_page('no')">
+                            {% trans 'Elimina la pagina e sposta i prodotti nei' %} <strong>{% trans 'Prodotti
+                                disponibili' %}</strong>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="mt-3 btn btn-block btn-primary"
+                            onclick="App.page.delete_project_page('yes')">
+                            {% trans 'Elimina' %} <br>{% trans 'la pagina' %} <br>{% trans 'e tutti i prodotti' %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Annulla' %}</button>
+            </div>
+        </div>
+    </div>
+</div>

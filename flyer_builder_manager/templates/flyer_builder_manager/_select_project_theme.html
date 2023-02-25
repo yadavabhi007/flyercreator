@@ -1,0 +1,30 @@
+{% load i18n %}
+<div class="modal-header">
+    <h5 class="modal-title">{% trans 'Seleziona il tema per il volantino' %}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form id="create-empty-project-form" method="POST" action="{% url 'flyer_builder_manager:create_empty_project' %}"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal-body">
+        {% for theme in themes %}
+        <div class="form-group row">
+            <div class="col-sm-1">
+                <input type="radio" class="form-control" name="theme_id" value={{theme.id}} required>
+            </div>
+            {% for template in theme.templates.all %}
+            <div class="col-sm-3">
+                {{template.page_type}}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <input type="hidden" name="data" value="{{data}}" />
+    </div>
+    <div class=" modal-footer ">
+        <button type="button " class="btn btn-secondary " data-dismiss="modal ">{% trans 'Annulla' %}</button>
+        <button type="submit" id="create_project " class=" btn btn-primary " value="Create ">{% trans 'Crea' %}</button>
+    </div>
+</form>

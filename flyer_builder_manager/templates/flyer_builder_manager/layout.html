@@ -1,0 +1,136 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>
+        {% block title %}
+        {% if 'clienti.interattivo.net' in request.get_host %}
+        {% trans 'Gestionale Catalogo Interattivo' %}
+        {% elif 'faidate.volantinointerattivo.net' in request.get_host %}
+        {% trans 'Volantino fai da te' %}
+        {% else %}
+        {% trans 'Flyer Builder Manager' %}
+        {% endif %}
+        {% endblock %}
+    </title>
+
+
+    {% with asset_version="6" %}
+
+    {% if 'clienti.interattivo.net' in request.get_host %}
+    <link rel="icon" type="image/png" href="{% static " flyer_builder_manager/img/favicon-interattivo.png" %}">
+    {% endif %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tooltipster@4.2.7/dist/css/tooltipster.bundle.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'flyer_builder_manager/css/layout.css' %}?v={{asset_version}}" />
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'flyer_builder_manager/css/global.css' %}?v={{asset_version}}" />
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'flyer_builder_manager/css/sidebar.css' %}?v={{asset_version}}" />
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'flyer_builder_manager/css/plugins/noty/noty.css' %}?v={{asset_version}}" />
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'flyer_builder_manager/css/plugins/noty/bootstrap-v4.css' %}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'flyer_builder_manager/css/project_page.css' %}?v={{asset_version}}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
+    {% block css %}{% endblock %}
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tooltipster@4.2.7/dist/js/tooltipster.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.6/loadingoverlay.min.js"
+        integrity="sha256-CImtjQVvmu/mM9AW+6gYkksByF4RBCeRzXMDA9MuAso=" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript"
+        src="{% static 'flyer_builder_manager/js/plugins/noty/noty.min.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript" src="{% static 'flyer_builder_manager/js/app.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript"
+        src="{% static 'flyer_builder_manager/js/search_product.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript"
+        src="{% static 'flyer_builder_manager/js/add_product.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript"
+        src="{% static 'flyer_builder_manager/js/edit_product.js' %}?v={{asset_version}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script type="text/javascript"
+        src="{% static 'flyer_builder_manager/js/project.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript" src="{% static 'flyer_builder_manager/js/page.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript"
+        src="{% static 'flyer_builder_manager/js/stopper.js' %}?v={{asset_version}}"></script>
+    <script type="text/javascript" src="{% static 'flyer_builder_manager/js/poster.js' %}?v={{asset_version}}"></script>
+    {% block js %}{% endblock %}
+
+    {% endwith %}
+
+    <!-- <Style>
+      .scroll-slid.style-3.test {
+        overflow-x: hidden;
+    }
+    .sidenav.sidenav_left.shadow-lg .row{
+     display:block;
+    }
+       
+    </Style> -->
+</head>
+
+<body>
+    <div id="header">
+        {% include "flyer_builder_manager/_header.html" %}
+    </div>
+    <div id="content">
+        <div id="left">
+            <div id="sidebar">
+                {% include "flyer_builder_manager/_sidebar.html" %}
+                {% block project_menu %}{% endblock %}
+            </div>
+        </div>
+        <div id="center">
+            {% if messages %}
+            {% for message in messages %}
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    new Noty({
+                        theme: 'bootstrap-v4',
+                        type: '{% if message.tags %}{{ message.tags }}{% endif %}',
+                        layout: 'topCenter',
+                        timeout: 5000,
+                        text: '{{ message|safe }}',
+                        closeWith: ["button"]
+                    }).show();
+                });
+            </script>
+            {% endfor %}
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div>
+        <div id="right">
+
+        </div>
+    </div>
+    {% include "flyer_builder_manager/_new_project_modal.html" %}
+    {% include "flyer_builder_manager/_new_empty_project_modal.html" %}
+    {% include "flyer_builder_manager/_search_product_modal.html" %}
+    {% include "flyer_builder_manager/_search_image_modal.html" %}
+    {% block modals %}{% endblock %}
+</body>
+
+</html>

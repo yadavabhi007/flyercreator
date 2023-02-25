@@ -1,0 +1,140 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block js %}
+<!-- <script type="text/javascript" src="{% static 'flyer_builder_manager/js/add_product.js' %}"></script> -->
+{% endblock %}
+
+
+{% block content %}
+<h3>
+    <i class="material-icons mr-2">add_circle</i>
+    {% trans 'Catalogo Prodotti: crea nuovo prodotto' %}
+</h3>
+
+<form id="create-empty-project-form" method="POST" action="{% url 'flyer_builder_manager:add_product' %}"
+    enctype="multipart/form-data" class="mt-3">
+    {% csrf_token %}
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Codice' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="code" id="add-product-form_code" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{% trans 'Descrizione' %}</h6>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 1' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field1" id="add-product-form_field1" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 2' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field2" id="add-product-form_field2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 3' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field3" id="add-product-form_field3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Campo 4' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="field4" id="add-product-form_field4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{% trans 'Dettagli' %}</h6>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Categoria' %}</label>
+                <div class="col-sm-8">
+                    <select name="category" class="form-control" required id="add-product-form_category">
+                        <option value="">{% trans 'Seleziona categoria' %}</option>
+                        {% for c in categories %}
+                        <option value="{{ c.id }}">
+                            {{ c.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Sottocategoria' %}</label>
+                <div class="col-sm-8">
+                    <select name="subcategory" class="form-control" required id="add-product-form_subcategory">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Tipo grammatura' %}</label>
+                <div class="col-sm-8">
+                    <select name="gramm_type" class="form-control" required id="add-product-form_gramm_type">
+                        <option value="-1">{% trans 'Seleziona' %}</option>
+                        <option value="0">{% trans 'Millilitri' %}</option>
+                        <option value="1">{% trans 'Grammi' %}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label">{% trans 'Grammatura' %}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="gramm_value" id="add-product-form_gramm_value">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-8">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="branded_product"
+                            id="add-product-form_branded_product">
+                        <label class="form-check-label" for="add-product-form_branded_product">
+                            {% trans 'Prodotto a marchio' %}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-light border-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{% trans 'Immagine' %}</h6>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="add-product-form_images"
+                            accept=".jpg, .bmp, .jpeg, .png, .tif, .tiff, .psd, .eps, .psb">
+                        <label class="custom-file-label" for="add-product-form_images"
+                            data-browse="Aggiungi file"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="images-upload-gallery mt-3 row"></div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="Create">{% trans 'Crea' %}</button>
+    <a type="button" class="btn btn-secondary" href="{% url 'flyer_builder_manager:catalog_products' %}">{% trans
+        'Annulla' %}</a>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        App.add_product.init();
+    });
+</script>
+
+{% endblock %}

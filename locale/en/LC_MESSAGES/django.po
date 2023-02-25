@@ -1,0 +1,1062 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-28 13:37+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\flyer_api\models.py:17
+msgid "Riferimento flyer block ID"
+msgstr ""
+
+#: .\flyer_api\models.py:18
+msgid "Riferimento stopper block ID"
+msgstr ""
+
+#: .\flyer_api\models.py:19
+msgid "Riferimento locandina block ID"
+msgstr ""
+
+#: .\flyer_api\models.py:20
+msgid "Only products catalog access"
+msgstr ""
+
+#: .\flyer_api\models.py:30
+msgid "Client"
+msgstr ""
+
+#: .\flyer_api\models.py:31
+msgid "Clients"
+msgstr ""
+
+#: .\flyer_api\models.py:37
+msgid "Riferimento ID block"
+msgstr ""
+
+#: .\flyer_api\models.py:43
+msgid "Block Info"
+msgstr ""
+
+#: .\flyer_api\models.py:44
+msgid "Block Infos"
+msgstr ""
+
+#: .\flyer_api\models.py:53
+msgid "Block Info Image"
+msgstr ""
+
+#: .\flyer_api\models.py:54
+msgid "Block Info Images"
+msgstr ""
+
+#: .\flyer_api\models.py:67
+msgid "Category"
+msgstr ""
+
+#: .\flyer_api\models.py:68
+msgid "Categorys"
+msgstr ""
+
+#: .\flyer_api\models.py:72 .\flyer_api\models.py:94
+msgid "Name"
+msgstr ""
+
+#: .\flyer_api\models.py:80
+msgid "Code"
+msgstr ""
+
+#: .\flyer_api\models.py:81
+msgid "Rows"
+msgstr ""
+
+#: .\flyer_api\models.py:82
+msgid "Columns"
+msgstr ""
+
+#: .\flyer_api\models.py:90
+msgid "Page Layout Template"
+msgstr ""
+
+#: .\flyer_api\models.py:91
+msgid "Page Layout Templates"
+msgstr ""
+
+#: .\flyer_api\models.py:106
+msgid "Page Title Template"
+msgstr ""
+
+#: .\flyer_api\models.py:107
+msgid "Page Title Templates"
+msgstr ""
+
+#: .\flyer_api\models.py:122
+msgid "Page Banner Template"
+msgstr ""
+
+#: .\flyer_api\models.py:123
+msgid "Page Banner Templates"
+msgstr ""
+
+#: .\flyer_api\models.py:138
+msgid "Page ExtraIcons Template"
+msgstr ""
+
+#: .\flyer_api\models.py:139
+msgid "Page ExtraIcons Templates"
+msgstr ""
+
+#: .\flyer_api\models.py:150
+msgid "Product Block Template"
+msgstr ""
+
+#: .\flyer_api\models.py:151
+msgid "Product Block Templates"
+msgstr ""
+
+#: .\flyer_api\models.py:166
+msgid "Profile"
+msgstr ""
+
+#: .\flyer_api\models.py:167
+msgid "Profiles"
+msgstr ""
+
+#: .\flyer_api\models.py:206
+msgid "Project Product Style"
+msgstr ""
+
+#: .\flyer_api\models.py:207
+msgid "Project Product Styles"
+msgstr ""
+
+#: .\flyer_api\models.py:228
+msgid "Project Page Style"
+msgstr ""
+
+#: .\flyer_api\models.py:229
+msgid "Project Page Styles"
+msgstr ""
+
+#: .\flyer_api\models.py:246
+msgid "Page Format"
+msgstr ""
+
+#: .\flyer_api\models.py:247
+msgid "Page Formats"
+msgstr ""
+
+#: .\flyer_api\models.py:326
+msgid "Project"
+msgstr ""
+
+#: .\flyer_api\models.py:327
+msgid "Projects"
+msgstr ""
+
+#: .\flyer_api\models.py:481
+msgid "Project Page"
+msgstr ""
+
+#: .\flyer_api\models.py:482
+msgid "Project Pages"
+msgstr ""
+
+#: .\flyer_api\models.py:612
+msgid "Project Page Cell"
+msgstr ""
+
+#: .\flyer_api\models.py:613
+msgid "Project Page Cells"
+msgstr ""
+
+#: .\flyer_api\models.py:621
+msgid "Banner Image"
+msgstr ""
+
+#: .\flyer_api\models.py:622
+msgid "Banner Images"
+msgstr ""
+
+#: .\flyer_api\models.py:647
+msgid "Special Image"
+msgstr ""
+
+#: .\flyer_api\models.py:648
+msgid "Special Images"
+msgstr ""
+
+#: .\flyer_api\models.py:659
+msgid "Project Page Special Cell"
+msgstr ""
+
+#: .\flyer_api\models.py:660
+msgid "Project Page Special Cells"
+msgstr ""
+
+#: .\flyer_api\models.py:969
+msgid "Project Product"
+msgstr ""
+
+#: .\flyer_api\models.py:970
+msgid "Project Products"
+msgstr ""
+
+#: .\flyer_api\models.py:994
+msgid "Project Image"
+msgstr ""
+
+#: .\flyer_api\models.py:995
+msgid "Project Images"
+msgstr ""
+
+#: .\flyer_api\models.py:1025
+msgid "User Product"
+msgstr ""
+
+#: .\flyer_api\models.py:1026
+msgid "User Products"
+msgstr ""
+
+#: .\flyer_api\models.py:1038
+msgid "User Product Image"
+msgstr ""
+
+#: .\flyer_api\models.py:1039
+msgid "User Product Images"
+msgstr ""
+
+#: .\flyer_api\models.py:1047
+msgid "Project Style"
+msgstr ""
+
+#: .\flyer_api\models.py:1048
+msgid "Project Styles"
+msgstr ""
+
+#: .\flyer_api\models.py:1112
+msgid "Project Stopper"
+msgstr ""
+
+#: .\flyer_api\models.py:1113
+msgid "Project Stoppers"
+msgstr ""
+
+#: .\flyer_api\models.py:1173
+msgid "Project Poster"
+msgstr ""
+
+#: .\flyer_api\models.py:1174
+msgid "Project Posters"
+msgstr ""
+
+#: .\flyer_api\models.py:1194
+msgid "Page Template"
+msgstr ""
+
+#: .\flyer_api\models.py:1195
+msgid "Page Templates"
+msgstr ""
+
+#: .\flyer_api\models.py:1208
+msgid "Template Theme"
+msgstr ""
+
+#: .\flyer_api\models.py:1209
+msgid "Template Themes"
+msgstr ""
+
+#: .\flyer_builder\settings.py:206
+msgid "English"
+msgstr ""
+
+#: .\flyer_builder\settings.py:207
+msgid "Italian"
+msgstr ""
+
+#: .\flyer_builder\urls.py:23
+msgid "A&B Flyer Builder"
+msgstr ""
+
+#: .\flyer_builder\urls.py:25 .\flyer_builder\urls.py:26
+msgid "A&B Flyer Builder Administration"
+msgstr ""
+
+#: .\flyer_builder\urls.py:30
+msgid "admin/"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_empty_project_modal.html:6
+msgid "Crea volantino"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_project_modal.html:6
+msgid "Crea volantino da Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_project_modal.html:15
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_result.html:8
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:15
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:93
+msgid "Nome"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_project_modal.html:21
+msgid "File Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_project_modal.html:25
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\_update_products_data_by_excel_modal.html:20
+msgid "Seleziona file"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_project_modal.html:33
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_select_project_theme.html:26
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:128
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:163
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\_update_products_data_by_excel_modal.html:28
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:29
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:29
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:176
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:314
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_send_to_agency_modal.html:22
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_switch_page_modal.html:27
+msgid "Annulla"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_new_project_modal.html:34
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_select_project_theme.html:27
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:127
+msgid "Crea"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:7
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:58
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:9
+msgid "Cerca prodotto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:10
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:61
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:13
+msgid "Aggiungi prodotto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:20
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:71
+msgid "Choose file"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:31
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:82
+msgid "Apply for this page"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:37
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:88
+msgid "Apply for whole project"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_modal.html:113
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:53
+msgid "Chiudi"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_result.html:7
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_result.html:7
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:114
+msgid "Immagine"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_result.html:21
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_result.html:27
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:85
+msgid "Seleziona"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_image_result.html:37
+msgid "Nessun risultato"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:22
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_result.html:8
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:22
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:31
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:21
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:30
+msgid "Codice"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:29
+msgid "Cerca per codice"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:35
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_result.html:9
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:31
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:32
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:31
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:40
+msgid "Descrizione"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_modal.html:42
+msgid "Cerca per descrizione"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_search_product_result.html:30
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:95
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:21
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell.html:19
+msgid "Modifica"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_select_project_theme.html:3
+msgid "Seleziona il tema per il volantino"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_sidebar.html:9
+msgid "Nuovo volantino"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_sidebar.html:14
+msgid "Crea da Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_sidebar.html:18
+msgid "Crea vuoto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\_sidebar.html:29
+msgid "Dashboard"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:13
+msgid "Catalogo Prodotti: crea nuovo prodotto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:33
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:33
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:42
+msgid "Campo 1"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:39
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:39
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:48
+msgid "Campo 2"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:45
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:46
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:55
+msgid "Campo 3"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:51
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:53
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:62
+msgid "Campo 4"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:60
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:63
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:72
+msgid "Dettagli"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:62
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:65
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:74
+msgid "Categoria"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:65
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:68
+msgid "Seleziona categoria"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:75
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:78
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:86
+msgid "Sottocategoria"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:82
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:90
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:97
+msgid "Tipo grammatura"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:86
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:101
+msgid "Millilitri"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:87
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:103
+msgid "Grammi"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:92
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:100
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:108
+msgid "Grammatura"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\add_product.html:104
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:113
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:121
+msgid "Prodotto a marchio"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\download.html:8
+msgid "Materiale scaricabile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\download.html:14
+msgid "Torna alla lista campagne"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\download.html:21
+msgid "Tipo"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\download.html:22
+msgid "Info"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\download.html:24
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:21
+msgid "Azioni"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\download.html:45
+msgid "Eliminare questo File?"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:8
+msgid "Campagne"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:17
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:29
+msgid "Cliente"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:18
+msgid "Nome progetto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:19
+msgid "Inizio sell-out"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:20
+msgid "Fine sell-out"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:29
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:42
+msgid "Scegli cliente"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:76
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:109
+msgid "Nessun prodotto trovato"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:91
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:125
+msgid "Inizio"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:101
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:135
+msgid "Precedente"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:110
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:144
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:39
+msgid "Pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:110
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:144
+msgid "di"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:121
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:155
+msgid "Successivo"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\campaign\list.html:131
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:165
+msgid "Fine"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:10
+msgid "Catalogo Prodotti"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:17
+msgid "Crea nuovo prodotto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:68
+msgid "nessuna"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:68
+msgid "immagine"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:90
+msgid "Vedi"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\catalog\products.html:101
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_available_products.html:23
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell.html:28
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:23
+msgid "Elimina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\layout.html:11
+#: .\flyer_builder_manager\templates\flyer_builder_manager\login_layout.html:11
+msgid "Gestionale Catalogo Interattivo"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\layout.html:13
+#: .\flyer_builder_manager\templates\flyer_builder_manager\login_layout.html:13
+msgid "Volantino fai da te"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\layout.html:15
+#: .\flyer_builder_manager\templates\flyer_builder_manager\login_layout.html:15
+msgid "Flyer Builder Manager"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\_subcategory_select_options.html:2
+msgid "Seleziona sottocategoria"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:12
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:13
+msgid "Modifica prodotto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:123
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:131
+msgid "Immagini"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:133
+msgid "Elimina foto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\edit_product.html:147
+msgid "Aggiungi immagine"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\product\show_product.html:15
+msgid "Visualizza prodotto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\_excel_import_report_modal.html:7
+msgid "Report importazione da Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\_update_products_data_by_excel_modal.html:7
+msgid "Aggiorna dati prodotti da Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\_update_products_data_by_excel_modal.html:29
+msgid "Importa"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell.html:22
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:6
+msgid "Modifica Stile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell.html:25
+msgid "Sposta in"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell.html:25
+msgid "prodotti disponibili"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:12
+msgid "Unisci con cella a sinistra"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:19
+msgid "Unisci con cella a destra"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:26
+msgid "Unisci con cella in alto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:33
+msgid "Unisci con cella in basso"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:40
+msgid "Dividi cella in 2 verticalmente"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:47
+msgid "Dividi cella in 3 verticalmente"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_cell_layout_dropdown.html:54
+msgid "Dividi cella in 2 orizzontalmente"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:6
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:87
+msgid "Pulisci pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:12
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:12
+msgid "Scegli come procedere"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:17
+msgid "Pulisci la pagina e sposta i prodotti nei"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:17
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:17
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:278
+msgid "Prodotti disponibili"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:23
+msgid "Pulisci la pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:23
+msgid "ed elimina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_clear_page_modal.html:23
+msgid "tutti i prodotti"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:6
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:97
+msgid "Elimina pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:17
+msgid "Elimina la pagina e sposta i prodotti nei"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:23
+msgid "la pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_delete_page_modal.html:23
+msgid "e tutti i prodotti"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:7
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:304
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\poster_product.html:18
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\product_list.html:9
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\stopper_product.html:18
+msgid "VOLANTINO"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:17
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:13
+msgid "Prezzo"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:28
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:19
+msgid "Descrizione 1"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:35
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:25
+msgid "Descrizione 2"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:42
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:31
+msgid "Descrizione 3"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:49
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:37
+msgid "Descrizione 4"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:57
+msgid "Tipo blocco"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:60
+msgid "Nessuno"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:123
+msgid "Codice cartellino"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:130
+msgid "Anziché"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:142
+msgid "Sconto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:154
+msgid "Numero pezzi"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:161
+msgid "Max acquistabili"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:168
+msgid "Punti"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_modal.html:178
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:315
+msgid "Salva"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:46
+msgid "Prezzo Font (Integer)"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:49
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:81
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:114
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:146
+msgid "Oswald"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:50
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:82
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:115
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:147
+msgid "Poppins"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:51
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:83
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:116
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:148
+msgid "PT Sans"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:52
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:84
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:117
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:149
+msgid "Roboto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:53
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:85
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:118
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:150
+msgid "Staatliches"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:78
+msgid "Prezzo Font (Float)"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:111
+msgid "Descrizione 1 Font"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:143
+msgid "Descrizione (2,3,4) Font"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:179
+msgid "Price Stile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:203
+msgid "Descrizione 1 Stile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:226
+msgid "Descrizione 2 Stile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:249
+msgid "Descrizione 3 Stile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_edit_product_style_modal.html:272
+msgid "Descrizione 4 Stile"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_send_to_agency_modal.html:9
+msgid "Invia ad agenzia"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_send_to_agency_modal.html:16
+msgid "Se invii il progetto all'agenzia non sarà più modificabile."
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_send_to_agency_modal.html:18
+msgid "Confermi l'invio?"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_send_to_agency_modal.html:21
+msgid "Invia"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_switch_page_modal.html:6
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:92
+msgid "Scambia pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\_switch_page_modal.html:26
+msgid "Scambia"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:71
+msgid "Impostazioni pagina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:77
+msgid "Inserisci prima di questa"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:81
+msgid "Inserisci dopo di questa"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:338
+msgid "Aggiorna dati"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:341
+msgid "prodotti da Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:346
+msgid "Genera PDF"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:352
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\poster_product.html:53
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\stopper_product.html:53
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:110
+msgid "Scarica PDF"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:355
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\poster_product.html:56
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\stopper_product.html:56
+msgid "Generato:"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:366
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\stopper_product.html:67
+msgid "Generazione PDF"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:369
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\stopper_product.html:70
+msgid "in corso..."
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:378
+msgid "Report importazione"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\page\edit.html:381
+msgid "da Excel"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\product_list.html:27
+msgid "Locandina"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\project\stopper_product.html:47
+msgid "Genera Stopper PDF"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:9
+msgid "Progetti in corso"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:16
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:94
+msgid "Data creazione"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:17
+msgid "Ultima modifica"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:18
+msgid "Azione"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:38
+msgid "Importazione da Excel fallita"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:66
+msgid "Inizializzazione corso..."
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:75
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:118
+msgid "Nessun progetto"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:87
+msgid "Progetti terminati"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:95
+msgid "Data chiusura"
+msgstr ""
+
+#: .\flyer_builder_manager\templates\flyer_builder_manager\projects.html:96
+msgid "Stato"
+msgstr ""
+
+#: .\templates\admin\base_site.html:29
+msgid "Documentation"
+msgstr ""
+
+#: .\templates\admin\base_site.html:33
+msgid "Change password"
+msgstr ""
+
+#: .\templates\admin\base_site.html:35
+msgid "Log out"
+msgstr ""

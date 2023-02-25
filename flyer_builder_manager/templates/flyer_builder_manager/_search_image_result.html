@@ -1,0 +1,40 @@
+{% load i18n %}
+<div>
+    {% if banners|length > 0 %}
+    <table class="table table-sm modal-table">
+        <thead>
+            <tr>
+                <th scope="col">{% trans 'Immagine' %}</th>
+                <th scope="col">{% trans 'Nome' %}</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for banner in banners %}
+            <tr>
+                <td>
+                    <img src="{{ banner.image.url }}" alt="" style="max-width:400px">
+                </td>
+                <td>{{ banner.name }}</td>
+                <td width="25%">
+                    <button type="button" class="btn btn-info search-result-select-button"
+                        onclick="App.page.select_image_to_add({{banner.pk}},{{header_banner_id}},{{page_id}},{{project_id}},'{{type}}')">
+                        <i class="material-icons">post_add</i> {% trans 'Seleziona' %}
+                    </button>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% if banners|length == 0 %}
+    <div class="mt-3 mb-3 text-center">
+        <i class="material-icons" style="font-size: 40px;">
+            block
+        </i>
+    </div>
+    <h4 class="mt-3 mb-3 text-center">{% trans 'Nessun risultato' %}</h4>
+    {% endif %}
+</div>

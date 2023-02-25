@@ -1,0 +1,59 @@
+{% extends "flyer_builder_manager/layout.html" %}
+{% load i18n %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h3 class="mb-3">
+            <i class="material-icons">file_download</i>
+            {% trans 'Materiale scaricabile' %} - "{{project.name}}"
+        </h3>
+    </div>
+    <div class="col-auto">
+        <a class="btn btn-success mb-3"
+            href="{% if request.user.is_superuser %}{% url 'flyer_builder_manager:campaign' 0 %}{% else %}{% url 'flyer_builder_manager:campaign'  request.user.profile.client.seller_code %}{% endif %}">
+            <i class="material-icons">keyboard_backspace</i>
+            {% trans 'Torna alla lista campagne' %}
+        </a>
+    </div>
+</div>
+<table class="table table-hover table-light table-bordered">
+    <thead>
+        <tr>
+            <th>{% trans 'Tipo' %}</th>
+            <th>{% trans 'Info' %}</th>
+            <th><label for="file"> File</label> </th>
+            <th>{% trans 'Azioni' %}</th>
+        </tr>
+    </thead>
+    <tbody id="body-cari">
+        {% for file in files %}
+
+        <tr>
+            <td>{{ file.id_FileType.name }}</td>
+            <td>{{ file.info }}</td>
+            <td>{{ file.file }}</td>
+            <td class="text-center">
+                <a data-id="{{file.pk}}" download="{{ file.file }}"
+                    href="{{ file.get_mockup_high_resolution_static_path }}" target="_blank"
+                    class="btn btn-primary download-file" role="button" title="Download File"><i
+                        class="material-icons">file_download</i></a>
+            <td>
+        </tr>
+        <div class="modal fade" id="fileremove{{ file.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="qstLabel">{% trans 'Eliminare questo File?' %}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}

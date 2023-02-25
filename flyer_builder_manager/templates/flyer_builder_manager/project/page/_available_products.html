@@ -1,0 +1,61 @@
+{% load i18n %}
+<div class="container">
+    {% for product in available_products %}
+    <div class="row">
+        <div class="col">
+            <div class="product-available-box" data-cell-id="0" data-product-id="{{product.pk}}">
+                <div class="product-available-box-over-layer">
+                    <div class="row justify-content-between">
+                        <i class="material-icons drag-indicator">
+                            open_with
+                        </i>
+                        <div class="col-auto">
+                            <div class="dropdown cellicon">
+                                <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                                    id="cell_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="material-icons">settings</i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="javascript:void(0)"
+                                        onclick="App.page.delete_project_product({{product.pk}})">
+                                        <i class="material-icons">delete</i>
+                                        {% trans 'Elimina' %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pab-img-container">
+                    <img src="{{product.image_url}}">
+                </div>
+                <div class="pab-info">
+                    <div class="price">
+                        <strong>{{product.price|floatformat:2}} &euro;</strong>
+                    </div>
+                    <div>
+                        {{product.description_brand|default:""}}
+                    </div>
+                    <div>
+                        {{product.description_type|default:""}}
+                    </div>
+                    <div>
+                        {{product.description_tastes|default:""}}
+                    </div>
+                    <div>
+                        {{product.description_weight|default:""}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        App.page.init_available_products_list();
+    });
+</script>

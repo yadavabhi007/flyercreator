@@ -1,0 +1,183 @@
+{% load i18n %}
+<div class="modal fade" id="edit-project-product-modal" tabindex="-1" role="dialog" aria-hidden="true"
+    data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'VOLANTINO' %} "{{project.name}}"</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="title_1 p-3">
+                <h3 class="font-weight-400 text-dark-50">{% trans 'Modifica prodotto' %}</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Prezzo' %}</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">&euro;</span>
+                            </div>
+                            <input type="text" class="form-control" name="price" id="edit-project-product_price">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Descrizione 1' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="description1"
+                            id="edit-project-product_description1" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Descrizione 2' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="description2"
+                            id="edit-project-product_description2" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Descrizione 3' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="description3"
+                            id="edit-project-product_description3" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Descrizione 4' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="description4"
+                            id="edit-project-product_description4" required>
+                    </div>
+                </div>
+                {% comment "Gestione blocchi originale" %}
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Tipo blocco' %}</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" id="edit-project-product_ref_block_id" name="ref_block_id">
+                            <option value="">{% trans 'Nessuno' %}</option>
+                            {% for block in request.user.profile.client.get_blocks %}
+                            <option value="{{block.pk}}" data-url="{{block.preview_path}}">
+                                {{block.code}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                {% endcomment %}
+
+                <div class="form-group row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <img class="img-fluid border border-primary" src="" id="edit-project-product_block_image"
+                            style="display: none;">
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-8">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="edit-project-product_loyalty"
+                                name="loyalty">
+                            <label class="custom-control-label" for="edit-project-product_loyalty">Fedeltà</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-8">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="edit-project-product_focus" name="focus">
+                            <label class="custom-control-label" for="edit-project-product_focus">Focus</label>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-group row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-8">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="edit-project-product_stopper"
+                                name="stopper">
+                            <label class="custom-control-label" for="edit-project-product_stopper">Stopper</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-8">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="edit-project-product_poster"
+                                name="poster">
+                            <label class="custom-control-label" for="edit-project-product_poster">Locandina</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="edit-project-product_note" class="col-sm-4 col-form-label">Note</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="edit-project-product_note" name="note" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Codice cartellino' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="tag_code" id="edit-project-product_tag_code">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Anziché' %}</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">&euro;</span>
+                            </div>
+                            <input type="text" class="form-control" name="price_without_discount"
+                                id="edit-project-product_price_without_discount">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-4 col-form-label">{% trans 'Sconto' %}</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="discount_percentage"
+                                id="edit-project-product_discount_percentage">
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="edit-project-product_pieces_number" class="col-sm-4 col-form-label">{% trans 'Numero
+                        pezzi' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="pieces_number"
+                            id="edit-project-product_pieces_number">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="edit-project-product_max_purchasable_pieces" class="col-sm-4 col-form-label">{% trans
+                        'Max acquistabili' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="max_purchasable_pieces"
+                            id="edit-project-product_max_purchasable_pieces">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="edit-project-product_points" class="col-sm-4 col-form-label">{% trans 'Punti' %}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="points" id="edit-project-product_points">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Annulla' %}</button>
+                <button type="button" class="btn btn-primary" value="Create" onclick="App.page.save_product_data()">{%
+                    trans 'Salva' %}</button>
+            </div>
+        </div>
+    </div>
+</div>

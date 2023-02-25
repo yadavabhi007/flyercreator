@@ -1,0 +1,35 @@
+{% extends "flyer_builder_manager/login_layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center loginrow">
+        <div class="col-auto">
+            <div class="card mt-3" style="width: 300px">
+                <div class="card-header" style="font-size: 20px;">
+                    <strong>
+                        {% if 'clienti.interattivo.net' in request.get_host %}
+                        Gestionale Catalogo Interattivo
+                        {% elif 'faidate.volantinointerattivo.net' in request.get_host %}
+                        <span style="color: #8B8B8A;">Volantino</span> <span style="color: #E69631;">fai da te</span>
+                        {% else %}
+                        A&B Flyer Builder Test
+                        {% endif %}
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'flyer_builder_manager:login' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <input type="submit" value="Login" class="btn btn-primary btn-block">
+                        <input type="hidden" name="next" value="{{ next }}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
