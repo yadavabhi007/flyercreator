@@ -116,14 +116,18 @@
                 <!--OLD_Code-->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Chiudi' %}</button> {% if
-                page %}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Chiudi' %}</button>
+                {% if page %}
                 <button type="button" class="btn btn-primary" onclick="App.page.save_footer_image_data()">Save</button>
-                {% endif %} {% if stoppers %}
+                {% endif %}
+                {% if stoppers %}
                 <button type="button" class="btn btn-primary"
-                    onclick="App.stopper.save_footer_image_data()">Save</button> {% endif %} {% if posters %}
+                    onclick="App.stopper.save_footer_image_data()">Save</button>
+                {% endif %}
+                {% if posters %}
                 <button type="button" class="btn btn-primary"
-                    onclick="App.poster.save_footer_image_data()">Save</button> {% endif %}
+                    onclick="App.poster.save_footer_image_data()">Save</button>
+                {% endif %}
             </div>
         </div>
     </div>

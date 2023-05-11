@@ -100,14 +100,12 @@
                         <td>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" class="custom-control-input submit_update"
-                                    id="stopper_{{product.id}}" data-name="stopper" data-product_id="{{product.id}}" {%
-                                    if product.stopper %}checked{%endif%}>
+                                    id="stopper_{{product.id}}" data-name="stopper" data-product_id="{{product.id}}" {% if product.stopper %}checked{%endif%}>
                                 <label class="custom-control-label" for="stopper_{{product.id}}">Stopper</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" class="custom-control-input submit_update"
-                                    id="poster_{{product.id}}" data-name="poster" data-product_id="{{product.id}}" {% if
-                                    product.poster %}checked{%endif%}>
+                                    id="poster_{{product.id}}" data-name="poster" data-product_id="{{product.id}}" {% if product.poster %}checked{%endif%}>
                                 <label class="custom-control-label" for="poster_{{product.id}}">Locandina</label>
                             </div>
                         </td>

@@ -27,29 +27,37 @@
                     <p>Border Style</p>
                 </div>
                 <div class="form-check mb-3 row m-0 modal_border">
-                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct1" value="solid" {%
-                        if page.border_style=="solid" %}checked{%endif%}>
+                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct1" value="solid"
+                    {% if page.border_style == "solid" %}
+                        checked
+                        {%endif%}>
                     <label class="form-check-label" for="applyProduct1">
                         <span class="border-icon bod1"></span>Solid
                     </label>
                 </div>
                 <div class="form-check mb-3 row m-0 modal_border">
-                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct2" value="dotted" {%
-                        if page.border_style=="dotted" %}checked{%endif%}>
+                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct2" value="dotted" 
+                    {% if page.border_style == "dotted" %}
+                    checked
+                    {%endif%}>
                     <label class="form-check-label" for="applyProduct2">
                         <span class="border-icon bod2"></span>Dotted
                     </label>
                 </div>
                 <div class="form-check mb-3 row m-0 modal_border">
-                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct3" value="dashed" {%
-                        if page.border_style=="dashed" %}checked{%endif%}>
+                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct3" value="dashed" 
+                    {% if page.border_style == "dashed" %}
+                    checked
+                    {%endif%}>
                     <label class="form-check-label" for="applyProduct3">
                         <span class="border-icon bod3"></span>Dashed
                     </label>
                 </div>
                 <div class="form-check mb-3 row m-0 modal_border">
-                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct4" value="double" {%
-                        if page.border_style=="double" %}checked{%endif%}>
+                    <input class="form-check-input" type="radio" name="borderstyle" id="applyProduct4" value="double" 
+                    {% if page.border_style == "double" %}
+                    checked
+                    {%endif%}>
                     <label class="form-check-label" for="applyProduct4">
                         <span class="border-icon bod4"></span>Double
                     </label>

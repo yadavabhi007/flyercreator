@@ -68,7 +68,7 @@
                     <select name="category" class="form-control" required id="edit-product-form_category">
                         <option value="">{% trans 'Seleziona categoria' %}</option>
                         {% for c in categories %}
-                        <option value="{{ c.id }}" {% if product.category==c %}selected{% endif %}>
+                        <option value="{{ c.id }}" {% if product.category == c %}selected{% endif %}>
                             {{ c.name }}
                         </option>
                         {% endfor %}
@@ -80,7 +80,7 @@
                 <div class="col-sm-8">
                     <select name="subcategory" class="form-control" required id="edit-product-form_subcategory">
                         {% for c in subcategories %}
-                        <option value="{{ c.id }}" {% if product.subcategory==c %}selected{% endif %}>
+                        <option value="{{ c.id }}" {% if product.subcategory == c %}selected{% endif %}>
                             {{ c.name }}
                         </option>
                         {% endfor %}
@@ -92,9 +92,12 @@
                 <div class="col-sm-8">
                     <select name="gramm_type" class="form-control" id="edit-product-form_gramm_type">
                         <option value="">Seleziona</option>
-                        <option value="0" {% if product.grammageType==0 %}selected{% endif %}>{% trans 'Millilitri
+                        <option value="0" {% if product.grammageType == 0 %}selected{% endif %}>
+                        {% trans 'Millilitri' %}
                         </option>
-                        <option value="1" {% if product.grammageType==1 %}selected{% endif %}>{% trans 'Grammi</option>
+                        <option value="1" {% if product.grammageType ==1 %}selected{% endif %}>
+                            {% trans 'Grammi' %}
+                        </option>
                     </select>
                 </div>
             </div>

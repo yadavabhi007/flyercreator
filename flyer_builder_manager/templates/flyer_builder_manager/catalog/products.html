@@ -41,8 +41,7 @@
                     <select name="seller" class="form-control" id="" onchange="App.show_loader(); return form.submit()">
                         <option value="0">{% trans 'Scegli cliente' %}</option>
                         {% for s in sellers %}
-                        <option value="{{ s.pk }}" {% if request.GET.seller==s.pk|stringformat:"i" %}selected{% endif
-                            %}>{{ s.name }}</option>
+                        <option value="{{ s.pk }}" {% if request.GET.seller == s.pk|stringformat:"i" %}selected{% endif %}>{{ s.name }}</option>
                         {% endfor %}
                     </select>
                 </td>

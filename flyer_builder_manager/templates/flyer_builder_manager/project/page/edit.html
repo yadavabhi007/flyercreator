@@ -116,7 +116,9 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn btn-sm btn-scondary h-30" type="button" onclick="App.zoom('out')"
-                                    {% if request.user.profile.project_page_zoom==70 %}disabled{% endif %}>
+                                    {% if request.user.profile.project_page_zoom == 70 %}
+                                    disabled
+                                    {% endif %}>
                                     <i class="material-icons" style="font-size: 20px">
                                         remove
                                     </i>
@@ -125,8 +127,10 @@
                             <input type="text" class="form-control text-center h-30"
                                 placeholder="Zoom {{request.user.profile.project_page_zoom}}%" disabled>
                             <div class="input-group-append">
-                                <button class="btn btn-sm btn-scondary h-30" type="button" onclick="App.zoom('in')" {%
-                                    if request.user.profile.project_page_zoom==110 %}disabled{% endif %}>
+                                <button class="btn btn-sm btn-scondary h-30" type="button" onclick="App.zoom('in')" 
+                                    {% if request.user.profile.project_page_zoom == 110 %}
+                                    disabled
+                                    {% endif %}>
                                     <i class="material-icons" style="font-size: 20px">
                                         add
                                     </i>
@@ -292,7 +296,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        App.project.init({{ project.pk }}, {{ project.pdf_generation_in_progress | yesno: 'true,false' }});
+        App.project.init({{ project.pk }}, {{ project.pdf_generation_in_progress|yesno:'true,false' }});
     });
 </script>
 {% endblock %}
