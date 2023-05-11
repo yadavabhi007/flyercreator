@@ -9,13 +9,13 @@
         <div class="col-auto h-100 login_hlogo">
             <a href="/" class="h-100">
                 {% if 'clienti.interattivo.net' in request.get_host %}
-                <img src="{% static " flyer_builder_manager/img/logo-interattivo.png" %}" class="h-75"
+                <img src="{% static "flyer_builder_manager/img/logo-interattivo.png" %}" class="h-75"
                     style="margin-top: 10px;">
                 {% elif 'faidate.volantinointerattivo.net' in request.get_host %}
-                <img src="{% static " flyer_builder_manager/img/logo-volantino-fai-da-te.png" %}" class="h-75"
+                <img src="{% static "flyer_builder_manager/img/logo-volantino-fai-da-te.png" %}" class="h-75"
                     style="margin-top: 10px;">
                 {% else %}
-                <img src="{% static " flyer_builder_manager/img/logo.jpg" %}" class="h-100">
+                <img src="{% static "flyer_builder_manager/img/logo.jpg" %}" class="h-100">
                 {% endif %}
             </a>
         </div>
@@ -38,9 +38,9 @@
                         <i class="material-icons">language</i>
                         {{ language.0|language_name_local }} ({{ language.0 }})
                         {% if language.0 == 'en' %}
-                        <img class="i18n_flag" width="15px" height="15px" src="{% static " admin/img/english.jpg" %}" />
+                        <img class="i18n_flag" width="15px" height="15px" src="{% static "admin/img/english.jpg" %}" />
                         {% else %}
-                        <img class="i18n_flag" width="15px" height="15px" src="{% static " admin/img/italy.jpg" %}" />
+                        <img class="i18n_flag" width="15px" height="15px" src="{% static "admin/img/italy.jpg" %}" />
                         {% endif %}
                     </a>
                     {% endfor %}
