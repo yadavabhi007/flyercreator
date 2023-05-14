@@ -1,2 +1,0 @@
-Admin - root/root1234
-User - abhi/123456er
